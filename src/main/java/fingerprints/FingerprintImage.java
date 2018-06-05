@@ -66,12 +66,12 @@ public class FingerprintImage
     {
         initImage(img);
         toGreyscale();
-        segmentFingerprint();
 
         calculator = new DirectionCalculator(imageData);
         directions = calculator.calculate();
 
-        featuresLookup = new FeaturesLookup(img, directions);
+        ImageBorders borders = new ImageBorders(imageData);
+        featuresLookup = new FeaturesLookup(img, directions, borders);
     }
 
     private void initImage(BufferedImage img)
@@ -84,21 +84,6 @@ public class FingerprintImage
 
         width = imageData.getWidth();
         height = imageData.getHeight();
-    }
-
-    private void segmentFingerprint()
-    {
-        int rowStart = 0, rowEnd = height - 1;
-        int columnStart = 0, columnEnd = width - 1;
-
-//        boolean rowStartFound = false;
-//        for (int row = 0; row < height - 1; row++) {
-//            boolean isRowEmpty = false;
-//
-//            for (int column = 0; column < width - 1; column++) {
-//
-//            }
-//        }
     }
 
     private void toGreyscale()

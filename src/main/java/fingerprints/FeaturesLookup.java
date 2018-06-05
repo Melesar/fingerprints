@@ -3,6 +3,7 @@ package fingerprints;
 import data.Vector2;
 
 import javax.imageio.ImageIO;
+import javax.rmi.CORBA.Util;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
@@ -30,6 +31,7 @@ public class FeaturesLookup
     private final BufferedImage img;
     private final BufferedImage debugImage;
     private final Directions directionsMap;
+    private final ImageBorders borders;
 
     private int imageWidth;
     private int imageHeight;
@@ -37,15 +39,18 @@ public class FeaturesLookup
     private int gridWidth, gridHeight;
 
     private GridPoint[] grid;
+    private boolean[][] visitedPoints;
 
-    private final int GridStep = 5;
+    private final int GridStep = 15;
 
-    FeaturesLookup(BufferedImage img, Directions directionsMap)
+    FeaturesLookup(BufferedImage img, Directions directionsMap, ImageBorders borders)
     {
         this.img = img;
         imageWidth = img.getWidth();
         imageHeight = img.getHeight();
+        visitedPoints = new boolean[imageWidth][imageHeight];
 
+        this.borders = borders;
         this.debugImage = createDebugImage();
         this.directionsMap = directionsMap;
 
@@ -86,37 +91,16 @@ public class FeaturesLookup
         }
     }
 
-    private Queue<Double> tracingAngles = new ArrayDeque<>();
-    private final int MaxAngles = 3;
+
 
     private void traceLines ()
     {
-        GridPoint start = findStartingPoint();
-        double angle = directionsMap.getDirection(start.x, start.y);
-        final int traceStep = 5;
-        boolean isStop = false;
+        GridPoint point = findStartingPoint();
+        while (point != null) {
+            traceLine(point, 0);
+            traceLine(point, Math.PI);
 
-        while (!isStop) {
-            addAngle(angle);
-
-            GridPoint end = trace(start, angle, traceStep);
-
-            if (end == null) {
-                break;
-            }
-
-            end = getSectionMinimum(end);
-            Vector2[] section = Utilites.bresenham(start.x, start.y, end.x, end.y);
-
-            for (int i = 0; i < section.length; i++) {
-                Vector2 p = section[i];
-                Color color = i > 0 ? Color.CYAN : Color.RED;
-                debugImage.setRGB((int) p.x, (int) p.y, color.getRGB());
-            }
-
-            start = end;
-            angle = directionsMap.getDirection(start.x, start.y);
-            isStop = shouldStop(start);
+            point = findStartingPoint();
         }
 
         try {
@@ -126,49 +110,95 @@ public class FeaturesLookup
         }
     }
 
-    private boolean shouldStop(GridPoint endPoint)
+    private Queue<Double> tracingAngles = new ArrayDeque<>();
+    private final int MaxAngles = 3;
+
+    private void traceLine(GridPoint start, double angleOffset)
     {
-        if (endPoint.x < 0 || endPoint.x >= imageWidth || endPoint.y < 0 || endPoint.y >= imageHeight) {
+        final int traceStep = 5;
+        double angle = angleOffset + directionsMap.getDirection(start.x, start.y);
+
+        GridPoint sectionStart = start;
+        while (true) {
+            GridPoint end = trace(sectionStart, angle, traceStep);
+
+            if (end == null) {
+                break;
+            }
+
+            addAngle(angle);
+            end = getSectionMinimum(end);
+            Vector2[] path = Utilites.bresenham(sectionStart.x, sectionStart.y, end.x, end.y);
+
+            if (shouldStop(path)) {
+                break;
+            }
+
+            sectionStart = end;
+            angle = angleOffset + directionsMap.getDirection(sectionStart.x, sectionStart.y);
+
+            for(Vector2 p : path) {
+                visitedPoints[(int)p.x][(int)p.y] = true;
+            }
+
+            for (int i = 0; i < path.length; i++) {
+                Vector2 p = path[i];
+                Color color = i > 0 ? Color.CYAN : Color.RED;
+                debugImage.setRGB((int) p.x, (int) p.y, color.getRGB());
+            }
+        }
+    }
+
+    private boolean shouldStop(Vector2[] path)
+    {
+        Vector2 endPoint = path[path.length - 1];
+        if (!borders.isInside((int) endPoint.x, (int) endPoint.y)) {
             return true;
         }
 
-        double averageAngle = 0;
-        for (Double angle : tracingAngles) {
-            averageAngle += angle;
+        double pathBrightness = 0;
+        for (Vector2 p : path) {
+            GridPoint point = new GridPoint((int) p.x, (int) p.y);
+            Color color = new Color(img.getRGB(point.x, point.y));
+            pathBrightness += Utilites.getColorBrightness(color);
         }
-        averageAngle /= MaxAngles;
 
-        final double angleThreshold = Math.PI / 4;
-        double currentAngle = directionsMap.getDirection(endPoint.x, endPoint.y);
-        if (Math.abs(currentAngle - averageAngle) > angleThreshold) {
+        if (pathBrightness / path.length > 0.8) {
             return true;
         }
 
-        if (Math.abs(currentAngle - tracingAngles.peek()) > angleThreshold) {
+        double angle = directionsMap.getDirection((int) endPoint.x, (int) endPoint.y);
+        if (!compareAngle(angle)) {
+            return true;
+        }
+
+        GridPoint end = new GridPoint((int) endPoint.x, (int) endPoint.y);
+        if (visitedPoints[end.x][end.y]) {
             return true;
         }
 
         return false;
     }
 
+    private int startPointIndex = 0;
+
     private GridPoint findStartingPoint()
     {
-        //return new GridPoint(245, 651);
-        int whiteRgb = Color.white.getRGB();
-        GridPoint center;
+        for (; startPointIndex < grid.length; ++startPointIndex) {
+            GridPoint p = grid[startPointIndex];
+            if (visitedPoints[p.x][p.y] || !borders.isInside(p.x, p.y) ||
+                    Utilites.getColorBrightness(new Color(img.getRGB(p.x, p.y))) > 0.9) {
+                continue;
+            }
 
-        Random r = new Random();
-        //for (GridPoint p : grid) {
-        while(true) {
-            GridPoint p = grid[r.nextInt(grid.length)];
-            if (!p.isVisited && img.getRGB(p.x, p.y) != whiteRgb) {
-                center = p;
-                break;
+            p = getSectionMinimum(p);
+            if (!visitedPoints[p.x][p.y] && borders.isInside(p.x, p.y)) {
+                visitedPoints[p.x][p.y] = true;
+                return p;
             }
         }
 
-        return center != null ? getSectionMinimum(center) : null;
-
+        return null;
     }
 
     private GridPoint getSectionMinimum(GridPoint center)
@@ -238,7 +268,6 @@ public class FeaturesLookup
     }
 
     private final double[] weightedMask = {7.0/29, 5.0/29, 2.0/29, 1.0/29, 2.0/29, 5.0/29, 7.0/29};
-//    private final double[] weightedMask = {1.0/23, 2.0/23, 5.0/23, 7.0/23, 5.0/23, 2.0/23, 1.0/23};
 
     private void applyWeightedMask(double[] brightnessArray, int p)
     {
@@ -271,11 +300,25 @@ public class FeaturesLookup
 
     private void addAngle(double angle)
     {
-        if (tracingAngles.size() >= MaxAngles) {
+        if (tracingAngles.size() == MaxAngles) {
             tracingAngles.poll();
         }
 
         tracingAngles.offer(angle);
+    }
+
+    private boolean compareAngle(double angle)
+    {
+        double angleSum = 0;
+        for (double a : tracingAngles) {
+            angleSum += a;
+        }
+
+        double averageAngle = angleSum / MaxAngles;
+        final double angleThreshold = Math.PI / 2.5;
+//
+        return Math.abs(averageAngle - angle) < angleThreshold;
+//        return Math.abs(tracingAngles.peek() - angle) < angleThreshold;
     }
 
     private BufferedImage createDebugImage()
