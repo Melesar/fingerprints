@@ -3,10 +3,11 @@ package fingerprints;
 import data.Vector2;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Utilites
 {
-    static Vector2[] bresenham(int x, int y, int x2, int y2)
+    static ArrayList<Vector2> bresenham(int x, int y, int x2, int y2)
     {
         int w = x2 - x;
         int h = y2 - y;
@@ -25,10 +26,10 @@ public class Utilites
             dx2 = 0;
         }
 
-        Vector2[] res = new Vector2[longest + 1];
+        ArrayList<Vector2> res = new ArrayList<>(longest + 1);
         int numerator = longest >> 1;
         for (int i = 0; i <= longest; i++) {
-            res[i] = new Vector2(x, y);
+            res.add(new Vector2(x, y));
             numerator += shortest;
             if (!(numerator < longest)) {
                 numerator -= longest;

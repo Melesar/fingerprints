@@ -25,12 +25,29 @@ public class FeaturesLookup
 
             isVisited = false;
         }
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            GridPoint point = (GridPoint) o;
+            return x == point.x &&
+                    y == point.y;
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash(x, y);
+        }
     }
 
     private class Feature
     {
         GridPoint point;
         double angle;
+        private Color color;
 
         public boolean isCloseTo (Feature other, double tolerance)
         {
@@ -41,15 +58,27 @@ public class FeaturesLookup
             return distance <= tolerance;
         }
 
-        public Feature(GridPoint point, double angle)
+        public Feature(GridPoint point, double angle, Color color)
         {
             this.point = point;
             this.angle = angle;
+            this.color = color;
         }
 
-        public Feature()
+        @Override
+        public boolean equals(Object o)
         {
-            point = new GridPoint(0, 0);
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Feature feature = (Feature) o;
+            return Double.compare(feature.angle, angle) == 0 &&
+                    Objects.equals(point, feature.point);
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash(point, angle);
         }
     }
 
@@ -126,9 +155,11 @@ public class FeaturesLookup
     {
         GridPoint point = findStartingPoint();
         while (point != null) {
-            traceLine(point, 0);
-            traceLine(point, Math.PI);
+            ArrayList<Vector2> currentPath = new ArrayList<>();
+            traceLine(point, 0, currentPath);
+            traceLine(point, Math.PI, currentPath);
 
+            markPathVisited(currentPath);
             point = findStartingPoint();
         }
 
@@ -142,7 +173,7 @@ public class FeaturesLookup
     private Queue<Double> tracingAngles = new ArrayDeque<>();
     private final int MaxAngles = 3;
 
-    private void traceLine(GridPoint start, double angleOffset)
+    private void traceLine(GridPoint start, double angleOffset, ArrayList<Vector2> currentPath)
     {
         final int traceStep = 5;
         double angle = angleOffset + directionsMap.getDirection(start.x, start.y);
@@ -159,13 +190,17 @@ public class FeaturesLookup
 
             addAngle(angle);
             end = getSectionMinimum(end);
-            Vector2[] path = Utilites.bresenham(sectionStart.x, sectionStart.y, end.x, end.y);
+            ArrayList<Vector2> path = Utilites.bresenham(sectionStart.x, sectionStart.y, end.x, end.y);
 
             if (shouldStop(path)) {
                 break;
             }
 
-            markPathVisited(path);
+            currentPath.addAll(path);
+
+            for (Vector2 p : path) {
+                visitedPoints[(int) p.x][(int) p.y] = true;
+            }
 
             addNewFeatures = true;
             sectionStart = end;
@@ -175,8 +210,8 @@ public class FeaturesLookup
                 continue;
             }
 
-            for (int i = 0; i < path.length; i++) {
-                Vector2 p = path[i];
+            for (int i = 0; i < path.size(); i++) {
+                Vector2 p = path.get(i);
                 Color color = i > 0 ? Color.CYAN : Color.RED;
                 debugImage.setRGB((int) p.x, (int) p.y, color.getRGB());
             }
@@ -190,9 +225,9 @@ public class FeaturesLookup
         newFeatures.clear();
     }
 
-    private boolean shouldStop(Vector2[] path)
+    private boolean shouldStop(ArrayList<Vector2> path)
     {
-        Vector2 endPoint = path[path.length - 1];
+        Vector2 endPoint = path.get(path.size() - 1);
         GridPoint end = new GridPoint((int) endPoint.x, (int) endPoint.y);
 
         if (!borders.isInside(end.x, end.y)) {
@@ -206,20 +241,20 @@ public class FeaturesLookup
             pathBrightness += Utilites.getColorBrightness(color);
         }
 
-        if (pathBrightness / path.length > 0.8) {
+        if (pathBrightness / path.size() > 0.8) {
             //registerFeature(end);
             return true;
         }
 
         double angle = directionsMap.getDirection(end.x, end.y);
         if (!compareAngle(angle)) {
-            //registerFeature(end);
+            registerFeature(end, Color.BLUE);
             return true;
         }
 
 
         if (visitedPoints[end.x][end.y]) {
-            registerFeature(end);
+            registerFeature(end, Color.RED);
             return true;
         }
 
@@ -258,15 +293,15 @@ public class FeaturesLookup
             return center;
         }
 
-        Vector2[] section = Utilites.bresenham(sectionStart.x, sectionStart.y, sectionEnd.x, sectionEnd.y);
+        ArrayList<Vector2> section = Utilites.bresenham(sectionStart.x, sectionStart.y, sectionEnd.x, sectionEnd.y);
 
         return getSectionMinimum(section, sectionDirection);
     }
 
-    private GridPoint getSectionMinimum (Vector2[] section, double direction)
+    private GridPoint getSectionMinimum (ArrayList<Vector2> section, double direction)
     {
         final int parallelSections = 1;
-        double[] brightnessArray = new double[section.length];
+        double[] brightnessArray = new double[section.size()];
         applyParallelSections(section, direction, parallelSections, brightnessArray);
 
         final int p = 3;
@@ -278,18 +313,18 @@ public class FeaturesLookup
             double brightness = brightnessArray[i];
             if (brightness <= minBrightness) {
                 minBrightness = brightness;
-                min.x = (int) section[i].x;
-                min.y = (int) section[i].y;
+                min.x = (int) section.get(i).x;
+                min.y = (int) section.get(i).y;
             }
         }
 
         return min;
     }
 
-    private void applyParallelSections(Vector2[] section, double direction, int parallelSections, double[] brightnessArray)
+    private void applyParallelSections(ArrayList<Vector2> section, double direction, int parallelSections, double[] brightnessArray)
     {
-        for (int sectionIndex = 0; sectionIndex < section.length; sectionIndex++) {
-            Vector2 p = section[sectionIndex];
+        for (int sectionIndex = 0; sectionIndex < section.size(); sectionIndex++) {
+            Vector2 p = section.get(sectionIndex);
             GridPoint current = new GridPoint((int) p.x, (int) p.y);
             int averageBrightness = 0;
             for (int i = 0; i < parallelSections; ++i) {
@@ -332,28 +367,25 @@ public class FeaturesLookup
         }
     }
 
-    private void markPathVisited(Vector2[] path)
+    private void markPathVisited(Iterable<Vector2> path)
     {
-        for (Vector2 p : path) {
-            visitedPoints[(int)p.x][(int)p.y] = true;
+        final int range = 5;
+        for(Vector2 p : path) {
+            GridPoint point = new GridPoint((int)p.x, (int)p.y);
+
+            for (int i = -range; i < range; i++) {
+                for (int j = -range; j < range; j++) {
+                    visitedPoints[point.x + i][point.y + j] = true;
+                }
+            }
         }
-//        final int range = 7;
-//        for(Vector2 p : path) {
-//            GridPoint point = new GridPoint((int)p.x, (int)p.y);
-//
-//            for (int i = -range; i < range; i++) {
-//                for (int j = -range; j < range; j++) {
-//                    visitedPoints[point.x + i][point.y + j] = true;
-//                }
-//            }
-//        }
     }
 
-    private void registerFeature(GridPoint point)
+    private void registerFeature(GridPoint point, Color color)
     {
         final double distanceTolerance = 15;
 
-        Feature newFeature = new Feature(point, directionsMap.getDirection(point.x, point.y));
+        Feature newFeature = new Feature(point, directionsMap.getDirection(point.x, point.y), color);
         if (borders.isCloseToBorder(newFeature.point.x, newFeature.point.y, distanceTolerance)) {
             return;
         }
@@ -377,13 +409,13 @@ public class FeaturesLookup
         for (Feature f : features) {
             GridPoint point = f.point;
             for (int i = -3; i <= 3; i++) {
-                debugImage.setRGB(point.x + i, point.y + 3, Color.red.getRGB());
-                debugImage.setRGB(point.x + i, point.y - 3, Color.red.getRGB());
+                debugImage.setRGB(point.x + i, point.y + 3, f.color.getRGB());
+                debugImage.setRGB(point.x + i, point.y - 3, f.color.getRGB());
             }
 
             for (int i = -3; i <= 3; i++) {
-                debugImage.setRGB(point.x + 3, point.y + i, Color.red.getRGB());
-                debugImage.setRGB(point.x - 3, point.y + i, Color.red.getRGB());
+                debugImage.setRGB(point.x + 3, point.y + i, f.color.getRGB());
+                debugImage.setRGB(point.x - 3, point.y + i, f.color.getRGB());
             }
         }
     }
@@ -411,6 +443,10 @@ public class FeaturesLookup
 
     private boolean compareAngle(double angle)
     {
+        if (tracingAngles.size() < MaxAngles) {
+            return true;
+        }
+
         double angleSum = 0;
         for (double a : tracingAngles) {
             angleSum += a;
