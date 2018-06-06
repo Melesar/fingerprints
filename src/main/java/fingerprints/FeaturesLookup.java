@@ -3,7 +3,6 @@ package fingerprints;
 import data.Vector2;
 
 import javax.imageio.ImageIO;
-import javax.rmi.CORBA.Util;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
@@ -28,6 +27,32 @@ public class FeaturesLookup
         }
     }
 
+    private class Feature
+    {
+        GridPoint point;
+        double angle;
+
+        public boolean isCloseTo (Feature other, double tolerance)
+        {
+            double x = point.x - other.point.x;
+            double y = point.y - other.point.y;
+            double distance = Math.sqrt(x * x + y * y);
+
+            return distance <= tolerance;
+        }
+
+        public Feature(GridPoint point, double angle)
+        {
+            this.point = point;
+            this.angle = angle;
+        }
+
+        public Feature()
+        {
+            point = new GridPoint(0, 0);
+        }
+    }
+
     private final BufferedImage img;
     private final BufferedImage debugImage;
     private final Directions directionsMap;
@@ -36,19 +61,23 @@ public class FeaturesLookup
     private int imageWidth;
     private int imageHeight;
 
-    private int gridWidth, gridHeight;
-
     private GridPoint[] grid;
     private boolean[][] visitedPoints;
+    private ArrayList<Feature> features;
+    private ArrayList<Feature> newFeatures;
 
-    private final int GridStep = 15;
+    private boolean showTracedLines = true;
+    private boolean showFeatures = true;
 
     FeaturesLookup(BufferedImage img, Directions directionsMap, ImageBorders borders)
     {
         this.img = img;
         imageWidth = img.getWidth();
         imageHeight = img.getHeight();
+
         visitedPoints = new boolean[imageWidth][imageHeight];
+        features = new ArrayList<>();
+        newFeatures = new ArrayList<>();
 
         this.borders = borders;
         this.debugImage = createDebugImage();
@@ -78,20 +107,20 @@ public class FeaturesLookup
 
     private void createGrid()
     {
-        gridWidth = imageWidth / GridStep;
-        gridHeight = imageHeight / GridStep;
+        final int gridStep = 15;
+
+        int gridWidth = imageWidth / gridStep;
+        int gridHeight = imageHeight / gridStep;
 
         grid = new GridPoint[gridWidth * gridHeight];
 
         for (int i = 0; i < gridWidth; i++) {
             for (int j = 0; j < gridHeight; j++) {
-                GridPoint p = new GridPoint(i * GridStep, j * GridStep);
+                GridPoint p = new GridPoint(i * gridStep, j * gridStep);
                 grid[i * gridHeight + j] = p;
             }
         }
     }
-
-
 
     private void traceLines ()
     {
@@ -117,8 +146,10 @@ public class FeaturesLookup
     {
         final int traceStep = 5;
         double angle = angleOffset + directionsMap.getDirection(start.x, start.y);
+        tracingAngles.clear();
 
         GridPoint sectionStart = start;
+        boolean addNewFeatures = false;
         while (true) {
             GridPoint end = trace(sectionStart, angle, traceStep);
 
@@ -134,11 +165,14 @@ public class FeaturesLookup
                 break;
             }
 
+            markPathVisited(path);
+
+            addNewFeatures = true;
             sectionStart = end;
             angle = angleOffset + directionsMap.getDirection(sectionStart.x, sectionStart.y);
 
-            for(Vector2 p : path) {
-                visitedPoints[(int)p.x][(int)p.y] = true;
+            if (!showTracedLines) {
+                continue;
             }
 
             for (int i = 0; i < path.length; i++) {
@@ -147,12 +181,21 @@ public class FeaturesLookup
                 debugImage.setRGB((int) p.x, (int) p.y, color.getRGB());
             }
         }
+
+        if (addNewFeatures) {
+            features.addAll(newFeatures);
+            showFeatures(newFeatures);
+        }
+
+        newFeatures.clear();
     }
 
     private boolean shouldStop(Vector2[] path)
     {
         Vector2 endPoint = path[path.length - 1];
-        if (!borders.isInside((int) endPoint.x, (int) endPoint.y)) {
+        GridPoint end = new GridPoint((int) endPoint.x, (int) endPoint.y);
+
+        if (!borders.isInside(end.x, end.y)) {
             return true;
         }
 
@@ -164,16 +207,19 @@ public class FeaturesLookup
         }
 
         if (pathBrightness / path.length > 0.8) {
+            //registerFeature(end);
             return true;
         }
 
-        double angle = directionsMap.getDirection((int) endPoint.x, (int) endPoint.y);
+        double angle = directionsMap.getDirection(end.x, end.y);
         if (!compareAngle(angle)) {
+            //registerFeature(end);
             return true;
         }
 
-        GridPoint end = new GridPoint((int) endPoint.x, (int) endPoint.y);
+
         if (visitedPoints[end.x][end.y]) {
+            registerFeature(end);
             return true;
         }
 
@@ -286,6 +332,62 @@ public class FeaturesLookup
         }
     }
 
+    private void markPathVisited(Vector2[] path)
+    {
+        for (Vector2 p : path) {
+            visitedPoints[(int)p.x][(int)p.y] = true;
+        }
+//        final int range = 7;
+//        for(Vector2 p : path) {
+//            GridPoint point = new GridPoint((int)p.x, (int)p.y);
+//
+//            for (int i = -range; i < range; i++) {
+//                for (int j = -range; j < range; j++) {
+//                    visitedPoints[point.x + i][point.y + j] = true;
+//                }
+//            }
+//        }
+    }
+
+    private void registerFeature(GridPoint point)
+    {
+        final double distanceTolerance = 15;
+
+        Feature newFeature = new Feature(point, directionsMap.getDirection(point.x, point.y));
+        if (borders.isCloseToBorder(newFeature.point.x, newFeature.point.y, distanceTolerance)) {
+            return;
+        }
+
+        for (int i = 0; i < features.size(); i++) {
+            if (features.get(i).isCloseTo(newFeature, distanceTolerance)) {
+                features.remove(i);
+                return;
+            }
+        }
+
+        newFeatures.add(newFeature);
+    }
+
+    private void showFeatures(ArrayList<Feature> features)
+    {
+        if (!showFeatures) {
+            return;
+        }
+
+        for (Feature f : features) {
+            GridPoint point = f.point;
+            for (int i = -3; i <= 3; i++) {
+                debugImage.setRGB(point.x + i, point.y + 3, Color.red.getRGB());
+                debugImage.setRGB(point.x + i, point.y - 3, Color.red.getRGB());
+            }
+
+            for (int i = -3; i <= 3; i++) {
+                debugImage.setRGB(point.x + 3, point.y + i, Color.red.getRGB());
+                debugImage.setRGB(point.x - 3, point.y + i, Color.red.getRGB());
+            }
+        }
+    }
+
     private GridPoint trace (GridPoint start, double angle, int step)
     {
         int x = (int) (start.x + step * Math.cos(angle));
@@ -315,10 +417,10 @@ public class FeaturesLookup
         }
 
         double averageAngle = angleSum / MaxAngles;
-        final double angleThreshold = Math.PI / 2.5;
-//
-        return Math.abs(averageAngle - angle) < angleThreshold;
-//        return Math.abs(tracingAngles.peek() - angle) < angleThreshold;
+        final double angleThreshold = Math.PI / 5;
+
+        return Math.abs(averageAngle - angle) <= angleThreshold ||
+                Math.abs(averageAngle - angle + Math.PI) <= angleThreshold;
     }
 
     private BufferedImage createDebugImage()

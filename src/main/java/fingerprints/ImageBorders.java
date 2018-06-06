@@ -15,6 +15,12 @@ public class ImageBorders
         return leftBorder[y] <= x && rightBorder[y] >= x;
     }
 
+    public boolean isCloseToBorder (int x, int y, double tolerance)
+    {
+        return x - leftBorder[y] <= tolerance ||
+                rightBorder[y] - x <= tolerance;
+    }
+
     public ImageBorders(BufferedImage image)
     {
         leftBorder = new int[image.getHeight()];

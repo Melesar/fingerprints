@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class FingerprintImage
 {
@@ -66,6 +67,7 @@ public class FingerprintImage
     {
         initImage(img);
         toGreyscale();
+        applyFilter();
 
         calculator = new DirectionCalculator(imageData);
         directions = calculator.calculate();
@@ -94,6 +96,39 @@ public class FingerprintImage
                 int channel = (int) (brightness * 255);
                 Color c = new Color (channel, channel, channel);
                 imageData.setRGB(width, height, c.getRGB());
+            }
+        }
+    }
+
+    private void applyFilter()
+    {
+        double[][] buffer = new double[width - 2][height - 2];
+        double[] window = new double[9];
+
+        for (int x = 1; x < width - 1; x++) {
+            for (int y = 1; y < height - 1; y++) {
+                window[0] = getColorBrightness(x - 1, y - 1);
+                window[1] = getColorBrightness(x - 1, y);
+                window[2] = getColorBrightness(x - 1, y + 1);
+                window[3] = getColorBrightness(x , y - 1);
+                window[4] = getColorBrightness(x , y );
+                window[5] = getColorBrightness(x , y + 1);
+                window[6] = getColorBrightness(x + 1, y - 1);
+                window[7] = getColorBrightness(x + 1, y);
+                window[8] = getColorBrightness(x + 1, y + 1);
+
+                Arrays.sort(window);
+
+                buffer[x - 1][y - 1] = window[4];
+            }
+        }
+
+        for (int x = 0; x < width - 2; x++) {
+            for (int y = 0; y < height - 2; y++) {
+                int colorValue = (int) (buffer[x][y] * 255);
+                Color c = new Color(colorValue, colorValue, colorValue);
+
+                imageData.setRGB(x + 1, y + 1, c.getRGB());
             }
         }
     }
