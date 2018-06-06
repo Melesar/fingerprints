@@ -5,83 +5,12 @@ import data.Vector2;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 public class FeaturesLookup
 {
-    private class GridPoint
-    {
-        int x, y;
-        boolean isVisited;
-
-        public GridPoint(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-
-            isVisited = false;
-        }
-
-        @Override
-        public boolean equals(Object o)
-        {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            GridPoint point = (GridPoint) o;
-            return x == point.x &&
-                    y == point.y;
-        }
-
-        @Override
-        public int hashCode()
-        {
-            return Objects.hash(x, y);
-        }
-    }
-
-    private class Feature
-    {
-        GridPoint point;
-        double angle;
-        private Color color;
-
-        public boolean isCloseTo (Feature other, double tolerance)
-        {
-            double x = point.x - other.point.x;
-            double y = point.y - other.point.y;
-            double distance = Math.sqrt(x * x + y * y);
-
-            return distance <= tolerance;
-        }
-
-        public Feature(GridPoint point, double angle, Color color)
-        {
-            this.point = point;
-            this.angle = angle;
-            this.color = color;
-        }
-
-        @Override
-        public boolean equals(Object o)
-        {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Feature feature = (Feature) o;
-            return Double.compare(feature.angle, angle) == 0 &&
-                    Objects.equals(point, feature.point);
-        }
-
-        @Override
-        public int hashCode()
-        {
-            return Objects.hash(point, angle);
-        }
-    }
-
     private final BufferedImage img;
     private final BufferedImage debugImage;
     private final Directions directionsMap;
@@ -95,8 +24,14 @@ public class FeaturesLookup
     private ArrayList<Feature> features;
     private ArrayList<Feature> newFeatures;
 
+    private boolean debugMode = true;
     private boolean showTracedLines = true;
     private boolean showFeatures = true;
+
+    public ArrayList<Feature> getFeatures()
+    {
+        return new ArrayList<>(features);
+    }
 
     FeaturesLookup(BufferedImage img, Directions directionsMap, ImageBorders borders)
     {
@@ -114,24 +49,6 @@ public class FeaturesLookup
 
         createGrid();
         traceLines();
-    }
-
-    public void showGrid()
-    {
-        ColorModel cm = img.getColorModel();
-        boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
-        WritableRaster raster = img.copyData(null);
-        BufferedImage gridImage = new BufferedImage(cm, raster, isAlphaPremultiplied, null);
-
-        for (GridPoint p : grid) {
-            gridImage.setRGB(p.x, p.y, Color.CYAN.getRGB());
-        }
-
-        try {
-            ImageIO.write(gridImage, "bmp", new File("grid.bmp"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void createGrid()
@@ -161,6 +78,10 @@ public class FeaturesLookup
 
             markPathVisited(currentPath);
             point = findStartingPoint();
+        }
+
+        if (!debugMode) {
+            return;
         }
 
         try {
@@ -206,7 +127,7 @@ public class FeaturesLookup
             sectionStart = end;
             angle = angleOffset + directionsMap.getDirection(sectionStart.x, sectionStart.y);
 
-            if (!showTracedLines) {
+            if (!debugMode || !showTracedLines) {
                 continue;
             }
 
@@ -242,7 +163,7 @@ public class FeaturesLookup
         }
 
         if (pathBrightness / path.size() > 0.8) {
-            //registerFeature(end);
+            registerFeature(end, Color.GREEN);
             return true;
         }
 
@@ -402,7 +323,7 @@ public class FeaturesLookup
 
     private void showFeatures(ArrayList<Feature> features)
     {
-        if (!showFeatures) {
+        if (!debugMode || !showFeatures) {
             return;
         }
 

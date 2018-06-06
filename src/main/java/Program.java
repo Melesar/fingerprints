@@ -14,8 +14,13 @@ public class Program
     public static void main(String[] args) throws IOException
     {
         URL imageUrl = Program.class.getClassLoader().getResource("fingerprint.jpg");
-        BufferedImage originalImage = ImageIO.read(imageUrl);
+        BufferedImage figerprintImage = ImageIO.read(imageUrl);
 
-        FingerprintImage fingerprintImage = new FingerprintImage(originalImage);
+        FingerprintImage originalImage = new FingerprintImage(figerprintImage);
+        FingerprintImage compareImage = new FingerprintImage(figerprintImage);
+
+        boolean isMatch = originalImage.isMatch(compareImage);
+
+        System.out.println(isMatch);
     }
 }
