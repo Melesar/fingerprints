@@ -1,26 +1,21 @@
-import data.Vector2;
-import fingerprints.FingerprintImage;
-import fingerprints.Utilites;
+import com.melesar.fingerprints.IO.FingerprintWriter;
+import com.melesar.fingerprints.IO.Identificator;
+import com.melesar.fingerprints.IO.ImageFingerprintIdentificator;
+import com.melesar.fingerprints.IO.ImageFingerprintWriter;
+import com.melesar.gui.LoginForm;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class Program
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
-        URL imageUrl = Program.class.getClassLoader().getResource("fingerprint.jpg");
-        BufferedImage figerprintImage = ImageIO.read(imageUrl);
+        LoginForm form = new LoginForm();
+        FingerprintWriter fingerprintWriter = new ImageFingerprintWriter(form);
+        Identificator identificator = new ImageFingerprintIdentificator(form);
 
-        FingerprintImage originalImage = new FingerprintImage(figerprintImage);
-        FingerprintImage compareImage = new FingerprintImage(figerprintImage);
-
-        boolean isMatch = originalImage.isMatch(compareImage);
-
-        System.out.println(isMatch);
+        form.setFingerprintWriter(fingerprintWriter);
+        form.setIdentificator(identificator);
+        form.setVisible(true);
     }
 }

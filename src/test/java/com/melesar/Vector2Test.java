@@ -1,6 +1,5 @@
-package data;
+package com.melesar;
 
-import data.Vector2;
 import org.junit.Assert;
 import org.junit.Test;
 

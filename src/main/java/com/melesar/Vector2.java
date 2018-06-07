@@ -1,4 +1,4 @@
-package data;
+package com.melesar;
 
 import java.util.Objects;
 

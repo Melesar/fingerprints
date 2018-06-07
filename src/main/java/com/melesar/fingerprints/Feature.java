@@ -1,14 +1,16 @@
-package fingerprints;
+package com.melesar.fingerprints;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Feature
+public class Feature implements Serializable
 {
     public GridPoint point;
     public double angle;
-    public Color color;
-    public boolean isMatched;
+
+    public transient Color color;
+    public transient boolean isMatched;
 
     public boolean isCloseTo (Feature other, double tolerance)
     {

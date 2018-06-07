@@ -1,6 +1,6 @@
-package fingerprints;
+package com.melesar.fingerprints;
 
-import data.Vector2;
+import com.melesar.Vector2;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -34,6 +34,20 @@ public class FingerprintImage
         transformFeatures(otherFeatures);
 
         return isMatch(otherFeatures);
+    }
+
+    public boolean isMatch(FeatureList featureList)
+    {
+        ArrayList<Feature> otherFeatures = featureList.getFeatures();
+
+        transformFeatures(otherFeatures);
+
+        return isMatch(otherFeatures);
+    }
+
+    public FeatureList getFeatures()
+    {
+        return new FeatureList(featuresLookup.getFeatures());
     }
 
     public void drawDirections() throws IOException
@@ -92,6 +106,7 @@ public class FingerprintImage
                     if (!areAnglesMatch(fOther.angle + angleOffset, fThis.angle)) {
                         continue;
                     }
+
 
                     GridPoint offset = getOffset(fThis.point, fOther.point, angleOffset);
                     transform.vote(offset, angleOffset);
@@ -278,8 +293,8 @@ public class FingerprintImage
         public Iterable<Double> getAngles()
         {
             ArrayList<Double> angleValues = new ArrayList<>(angleVotes.length);
-            for (int i = 0; i < angleValues.size(); i++) {
-                angleValues.set(i, i * angleStep);
+            for (int i = 0; i < angleVotes.length; i++) {
+                angleValues.add(i * angleStep);
             }
 
             return angleValues;
@@ -290,6 +305,9 @@ public class FingerprintImage
             points.put(point, points.get(point) + 1);
 
             GridPoint neighbour = new GridPoint(0, 0);
+
+            int angleIndex = (int) (theta / angleStep);
+            angleVotes[angleIndex] += 1;
             for (int i = -1; i <= 1; i++) {
                 neighbour.x = point.x + i * gridStep;
                 for (int j = -1; j <= 1; j++) {
@@ -303,13 +321,9 @@ public class FingerprintImage
                     }
                 }
 
-
-                int angleIndex = (int) (theta / angleStep);
-                angleVotes[angleIndex] += 1;
-
-                double neighbourIndex = angleIndex + i;
+                int neighbourIndex = angleIndex + i;
                 if (neighbourIndex >= 0 && neighbourIndex < angleVotes.length) {
-                    angleVotes[angleIndex] += 1;
+                    angleVotes[neighbourIndex] += 1;
                 }
             }
         }

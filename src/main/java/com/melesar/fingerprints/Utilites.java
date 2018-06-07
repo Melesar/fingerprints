@@ -1,6 +1,6 @@
-package fingerprints;
+package com.melesar.fingerprints;
 
-import data.Vector2;
+import com.melesar.Vector2;
 
 import java.awt.*;
 import java.util.ArrayList;

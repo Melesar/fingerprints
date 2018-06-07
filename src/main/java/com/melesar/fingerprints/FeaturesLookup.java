@@ -1,6 +1,6 @@
-package fingerprints;
+package com.melesar.fingerprints;
 
-import data.Vector2;
+import com.melesar.Vector2;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -53,7 +53,8 @@ public class FeaturesLookup
 
     private void createGrid()
     {
-        final int gridStep = 15;
+//        final int gridStep = 15;
+        final int gridStep = 8;
 
         int gridWidth = imageWidth / gridStep;
         int gridHeight = imageHeight / gridStep;
@@ -162,14 +163,14 @@ public class FeaturesLookup
             pathBrightness += Utilites.getColorBrightness(color);
         }
 
-        if (pathBrightness / path.size() > 0.8) {
+        if (pathBrightness / path.size() > 0.9) {
             registerFeature(end, Color.GREEN);
             return true;
         }
 
         double angle = directionsMap.getDirection(end.x, end.y);
         if (!compareAngle(angle)) {
-            registerFeature(end, Color.BLUE);
+            //registerFeature(end, Color.BLUE);
             return true;
         }
 
@@ -205,7 +206,7 @@ public class FeaturesLookup
 
     private GridPoint getSectionMinimum(GridPoint center)
     {
-        final int sectionHalfLength = 8;
+        final int sectionHalfLength = 5;
         double sectionDirection = directionsMap.getDirection(center.x, center.y) + Math.PI / 2;
         GridPoint sectionStart = trace(center, sectionDirection, -sectionHalfLength);
         GridPoint sectionEnd = trace(center, sectionDirection, sectionHalfLength);
@@ -225,7 +226,7 @@ public class FeaturesLookup
         double[] brightnessArray = new double[section.size()];
         applyParallelSections(section, direction, parallelSections, brightnessArray);
 
-        final int p = 3;
+        final int p = 2;
         applyWeightedMask(brightnessArray, p);
 
         GridPoint min = new GridPoint(0, 0);
@@ -296,7 +297,12 @@ public class FeaturesLookup
 
             for (int i = -range; i < range; i++) {
                 for (int j = -range; j < range; j++) {
-                    visitedPoints[point.x + i][point.y + j] = true;
+                    int x = point.x + i;
+                    int y = point.y + j;
+
+                    if (x >= 0 && x < imageWidth && y >= 0 && y < imageHeight) {
+                        visitedPoints[x][y] = true;
+                    }
                 }
             }
         }

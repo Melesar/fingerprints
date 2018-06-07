@@ -1,4 +1,4 @@
-package fingerprints;
+package com.melesar.fingerprints;
 
 import org.junit.Assert;
 

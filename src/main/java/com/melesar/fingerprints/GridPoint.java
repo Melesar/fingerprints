@@ -1,11 +1,12 @@
-package fingerprints;
+package com.melesar.fingerprints;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class GridPoint
+public class GridPoint implements Serializable
 {
     int x, y;
-    boolean isVisited;
+    transient boolean isVisited;
 
     public GridPoint(int x, int y)
     {
