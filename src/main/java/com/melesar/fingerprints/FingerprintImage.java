@@ -21,12 +21,6 @@ public class FingerprintImage
     private Directions directions;
     private FeaturesLookup featuresLookup;
 
-    public Color getColor (int x, int y)
-    {
-        int rgb = imageData.getRGB(x, y);
-        return new Color(rgb);
-    }
-
     public boolean isMatch(FingerprintImage other)
     {
         ArrayList<Feature> otherFeatures = other.featuresLookup.getFeatures();
@@ -70,7 +64,7 @@ public class FingerprintImage
                 int yEnd = (int) Math.round(j + 4 * Math.sin(angle));
 
                 for (Vector2 v : Utilites.bresenham(xStart, yStart, xEnd, yEnd)) {
-                    directionsMap.setRGB((int)v.x, (int)v.y, 0);
+                    directionsMap.setRGB((int) v.x, (int) v.y, 0);
                 }
             }
         }
@@ -78,7 +72,7 @@ public class FingerprintImage
         ImageIO.write(directionsMap, "bmp", new File("directions.bmp"));
     }
 
-    public FingerprintImage (BufferedImage img)
+    public FingerprintImage(BufferedImage img)
     {
         initImage(img);
         toGreyscale();
@@ -100,8 +94,8 @@ public class FingerprintImage
 
     private void transformFeatures(ArrayList<Feature> otherFeatures)
     {
-        for(Feature fThis : featuresLookup.getFeatures()) {
-            for(Feature fOther : otherFeatures) {
+        for (Feature fThis : featuresLookup.getFeatures()) {
+            for (Feature fOther : otherFeatures) {
                 for (Double angleOffset : transform.getAngles()) {
                     if (!areAnglesMatch(fOther.angle + angleOffset, fThis.angle)) {
                         continue;
@@ -114,22 +108,22 @@ public class FingerprintImage
             }
         }
 
-        GridPoint pointOffset = transform.getMaxPoint();
-        double angleOffset = transform.getMaxTheta();
-        for(Feature fOther : otherFeatures) {
+        GridPoint pointOffset = new GridPoint(0, 0);
+        double angleOffset = transform.getMaxVote(pointOffset);
+        for (Feature fOther : otherFeatures) {
             fOther.point.x += pointOffset.x;
             fOther.point.y += pointOffset.y;
             fOther.angle += angleOffset;
         }
 
-        System.out.println (String.format("Transformation applied: offset = %s, angle = %s", pointOffset, angleOffset));
+        System.out.println(String.format("Transformation applied: offset = %s, angle = %s", pointOffset, angleOffset));
     }
 
     private boolean isMatch(ArrayList<Feature> otherFeatures)
     {
         int featuresMatched = 0;
-        for(Feature fThis : featuresLookup.getFeatures()) {
-            for(Feature fOther : otherFeatures) {
+        for (Feature fThis : featuresLookup.getFeatures()) {
+            for (Feature fOther : otherFeatures) {
                 if (fOther.isMatched) {
                     continue;
                 }
@@ -157,7 +151,7 @@ public class FingerprintImage
     }
 
 
-    private GridPoint getOffset (GridPoint p1, GridPoint p2, double angle)
+    private GridPoint getOffset(GridPoint p1, GridPoint p2, double angle)
     {
         double offsetX = p1.x - (Math.cos(angle) * p2.x - Math.sin(angle) * p2.y);
         double offsetY = p1.y - (Math.sin(angle) * p2.x + Math.cos(angle) * p2.y);
@@ -183,7 +177,7 @@ public class FingerprintImage
             for (int height = 0; height < this.height; height++) {
                 double brightness = getColorBrightness(width, height);
                 int channel = (int) (brightness * 255);
-                Color c = new Color (channel, channel, channel);
+                Color c = new Color(channel, channel, channel);
                 imageData.setRGB(width, height, c.getRGB());
             }
         }
@@ -199,9 +193,9 @@ public class FingerprintImage
                 window[0] = getColorBrightness(x - 1, y - 1);
                 window[1] = getColorBrightness(x - 1, y);
                 window[2] = getColorBrightness(x - 1, y + 1);
-                window[3] = getColorBrightness(x , y - 1);
-                window[4] = getColorBrightness(x , y );
-                window[5] = getColorBrightness(x , y + 1);
+                window[3] = getColorBrightness(x, y - 1);
+                window[4] = getColorBrightness(x, y);
+                window[5] = getColorBrightness(x, y + 1);
                 window[6] = getColorBrightness(x + 1, y - 1);
                 window[7] = getColorBrightness(x + 1, y);
                 window[8] = getColorBrightness(x + 1, y + 1);
@@ -238,15 +232,38 @@ public class FingerprintImage
         private HashMap<GridPoint, Integer> points;
         private int[] angleVotes;
 
+        private int[][][] A;
+
         private final double angleStep = Math.PI / 12;
         private final int gridStep = 15;
+        private final int angleLength = (int) (angleBound / angleStep);
+
+        public double getMaxVote(GridPoint point)
+        {
+            int maxVote = 0;
+            double maxAngle = 0;
+
+            for (int x = 0; x < width / gridStep; x++) {
+                for (int y = 0; y < height / gridStep; y++) {
+                    for (int t = 0; t < angleLength; t++) {
+                        if (A[x][y][t] > maxVote) {
+                            point.x = x * gridStep - horizontalBound;
+                            point.y = y * gridStep - verticalBound;
+                            maxAngle = t * angleStep;
+                        }
+                    }
+                }
+            }
+
+            return maxAngle;
+        }
 
         public GridPoint getMaxPoint()
         {
             int maxVotes = 0;
             GridPoint votedPoint = new GridPoint(0, 0);
 
-            for(Map.Entry<GridPoint, Integer> entry : points.entrySet()) {
+            for (Map.Entry<GridPoint, Integer> entry : points.entrySet()) {
                 if (maxVotes < entry.getValue()) {
                     votedPoint = entry.getKey();
                     maxVotes = entry.getValue();
@@ -272,60 +289,76 @@ public class FingerprintImage
             return votedAngle;
         }
 
-        public GridPoint samplePoint (double x, double y)
+        public double getMaxTheta(GridPoint point)
+        {
+            int maxVotes = 0;
+            double votedAngle = 0;
+
+            for (int i = 0; i < angleLength; i++) {
+                int votes = A[point.x - horizontalBound][point.y - verticalBound][i];
+                if (maxVotes < votes) {
+                    votedAngle = i * angleStep;
+                    maxVotes = votes;
+                }
+            }
+
+            return votedAngle;
+        }
+
+        public GridPoint samplePoint(double x, double y)
         {
             x = Math.round(x);
             y = Math.round(y);
 
-            double minDistance = Double.MAX_VALUE;
-            GridPoint result = new GridPoint(0, 0);
-            for(GridPoint p : points.keySet()) {
-                double distance = Math.abs(x - p.x) + Math.abs(y - p.y);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    result = p;
-                }
-            }
+            int factorX = (int) ((x + horizontalBound) / gridStep);
+            int nx = Math.max(factorX * gridStep - horizontalBound, -horizontalBound);
 
-            return result;
+            int factorY = (int) ((y + verticalBound) / gridStep);
+            int ny = Math.max(factorY * gridStep - verticalBound, -verticalBound);
+
+            return new GridPoint(nx, ny);
         }
 
         public Iterable<Double> getAngles()
         {
-            ArrayList<Double> angleValues = new ArrayList<>(angleVotes.length);
-            for (int i = 0; i < angleVotes.length; i++) {
+            ArrayList<Double> angleValues = new ArrayList<>(angleLength);
+            for (int i = 0; i < angleLength; i++) {
                 angleValues.add(i * angleStep);
             }
 
             return angleValues;
         }
 
-        public void vote (GridPoint point, double theta)
+        public void vote(GridPoint point, double theta)
         {
-            points.put(point, points.get(point) + 1);
+            int x = (point.x + horizontalBound) / gridStep;
+            int y = (point.y + verticalBound) / gridStep;
+            int t = (int) (theta / angleStep);
 
-            GridPoint neighbour = new GridPoint(0, 0);
+            if (isInside(x, y, t)) {
+                A[x][y][t] += 1;
+            }
 
-            int angleIndex = (int) (theta / angleStep);
-            angleVotes[angleIndex] += 1;
             for (int i = -1; i <= 1; i++) {
-                neighbour.x = point.x + i * gridStep;
-                for (int j = -1; j <= 1; j++) {
-                    neighbour.y = point.y + j * gridStep;
+                for (int j = -1; j <= 1; ++j) {
+                    for (int k = -1; k <= 1; ++k) {
+                        int nx = x + i;
+                        int ny = y + j;
+                        int nt = t + k;
 
-                    if (neighbour.x >= -horizontalBound &&
-                            neighbour.x <= horizontalBound &&
-                            neighbour.y >= -verticalBound &&
-                            neighbour.y <= verticalBound) {
-                        points.put(neighbour, points.get(neighbour) + 1);
+                        if (isInside(nx, ny, nt)) {
+                            A[nx][ny][nt] += 1;
+                        }
                     }
                 }
-
-                int neighbourIndex = angleIndex + i;
-                if (neighbourIndex >= 0 && neighbourIndex < angleVotes.length) {
-                    angleVotes[neighbourIndex] += 1;
-                }
             }
+        }
+
+        private boolean isInside(int nx, int ny, int nt)
+        {
+            return nx >= 0 && nx < width / gridStep &&
+                    ny >= 0 && ny < height / gridStep &&
+                    nt >= 0 && nt < angleLength;
         }
 
         public TransformationTable(int imageWidth, int imageHeight)
@@ -333,14 +366,16 @@ public class FingerprintImage
             this.horizontalBound = imageWidth / 2;
             this.verticalBound = imageHeight / 2;
 
-            points = new HashMap<>();
-            for (int x = -horizontalBound; x <= horizontalBound; x += gridStep) {
-                for (int y = -verticalBound; y < verticalBound; y += gridStep) {
-                    points.put(new GridPoint(x, y), 0);
-                }
-            }
+            A = new int[imageWidth / gridStep][imageHeight / gridStep][angleLength];
+//
+//            points = new HashMap<>();
+//            for (int x = -horizontalBound; x <= horizontalBound; x += gridStep) {
+//                for (int y = -verticalBound; y < verticalBound; y += gridStep) {
+//                    points.put(new GridPoint(x, y), 0);
+//                }
+//            }
 
-            angleVotes = new int[(int) (angleBound / angleStep)];
+//            angleVotes = new int[(int) (angleBound / angleStep)];
         }
     }
 }
