@@ -89,27 +89,41 @@ public class FingerprintImage
 
     private TransformationTable transform;
 
-    private final double angleTolerance = Math.PI / 10;
+    private final double angleTolerance = 0.1;
     private final double distanceTolerance = 8;
+
+    private int hits = 0;
 
     private void transformFeatures(ArrayList<Feature> otherFeatures)
     {
+        final int TargetIndex = 5;
+        final double AngleNotFound = 1000.0;
         for (Feature fThis : featuresLookup.getFeatures()) {
             for (Feature fOther : otherFeatures) {
+                double minDifference = Double.MAX_VALUE;
+                double minAngleOffset = AngleNotFound;
                 for (Double angleOffset : transform.getAngles()) {
-                    if (!areAnglesMatch(fOther.angle + angleOffset, fThis.angle)) {
+                    double difference = getAnglesDifference(fOther.angle + angleOffset, fThis.angle);
+                    if (difference > angleTolerance) {
                         continue;
                     }
 
-
-                    GridPoint offset = getOffset(fThis.point, fOther.point, angleOffset);
-                    transform.vote(offset, angleOffset);
-                    //break;
+                    if (minDifference > difference) {
+                        minDifference = difference;
+                        minAngleOffset = angleOffset;
+                    }
                 }
+
+                if (minAngleOffset == AngleNotFound) {
+                    continue;
+                }
+                GridPoint offset = getOffset(fThis.point, fOther.point, minAngleOffset);
+                transform.vote(offset, minAngleOffset);
             }
         }
 
-        //transform.displayVotedAngles();
+        System.out.println(String.format("Voted for index %d: %d", TargetIndex, hits));
+        transform.displayVotedAngles();
 
         GridPoint pointOffset = new GridPoint(0, 0);
         double angleOffset = transform.getMaxVote(pointOffset);
@@ -145,6 +159,11 @@ public class FingerprintImage
         System.out.println(String.format("Match failed. Features matched: %d", featuresMatched));
 
         return false;
+    }
+
+    private double getAnglesDifference (double a, double b)
+    {
+        return Math.min(Math.abs(a - b), Math.abs(a + Math.PI - b));
     }
 
     private boolean areAnglesMatch(double a, double b)
@@ -238,12 +257,16 @@ public class FingerprintImage
         private final int gridStep = 3;
         private final int angleLength = (int) (angleBound / angleStep);
 
+        private final int xLength;
+        private final int yLength;
+
+
         public double getMaxVote(GridPoint point)
         {
             int[] angleVotes = new int[angleLength];
             for (int t = 0; t < angleLength; ++t) {
-                for (int x = 0; x < width / gridStep; x++) {
-                    for (int y = 0; y < height / gridStep; y++) {
+                for (int x = 0; x < xLength; x++) {
+                    for (int y = 0; y < yLength; y++) {
                         angleVotes[t] += A[x][y][t];
                     }
                 }
@@ -259,8 +282,8 @@ public class FingerprintImage
             }
 
             maxVote = 0;
-            for (int x = 0; x < width / gridStep; x++) {
-                for (int y = 0; y < height / gridStep; y++) {
+            for (int x = 0; x < xLength; x++) {
+                for (int y = 0; y < yLength; y++) {
                     if (A[x][y][maxAngleIndex] > maxVote) {
                         maxVote = A[x][y][maxAngleIndex];
                         point.x = x * gridStep - horizontalBound;
@@ -269,7 +292,7 @@ public class FingerprintImage
                 }
             }
 
-            return maxAngleIndex * gridStep;
+            return maxAngleIndex * angleStep;
         }
 
         public void displayVotedAngles()
@@ -279,26 +302,26 @@ public class FingerprintImage
             ArrayList<Double> angleValues = getAngles();
             int[] angleVotes = new int[angleLength];
             for (int t = 0; t < angleLength; ++t) {
-                for (int x = 0; x < width / gridStep; x++) {
-                    for (int y = 0; y < height / gridStep; y++) {
+                for (int x = 0; x < xLength; x++) {
+                    for (int y = 0; y < yLength; y++) {
                         angleVotes[t] += A[x][y][t];
                     }
                 }
 
-                System.out.printf(" %f |", angleValues.get(t));
+                System.out.printf(" %f |\t", angleValues.get(t));
             }
 
 
             System.out.print("\n ");
 
             for (int t = 0; t < angleLength; t++) {
-                System.out.print("_");
+                System.out.print("_\t");
             }
 
             System.out.print("\n ");
 
             for (int t = 0; t < angleLength; t++) {
-                System.out.printf(" %d |", angleVotes[t]);
+                System.out.printf(" %d |\t", angleVotes[t]);
             }
 
             System.out.println();
@@ -311,9 +334,11 @@ public class FingerprintImage
 
             int factorX = (int) ((x + horizontalBound) / gridStep);
             int nx = Math.max(factorX * gridStep - horizontalBound, -horizontalBound);
+            nx = Math.min(nx, horizontalBound - gridStep);
 
             int factorY = (int) ((y + verticalBound) / gridStep);
             int ny = Math.max(factorY * gridStep - verticalBound, -verticalBound);
+            ny = Math.min(ny, verticalBound - gridStep);
 
             return new GridPoint(nx, ny);
         }
@@ -336,8 +361,9 @@ public class FingerprintImage
 
             if (isInside(x, y, t)) {
                 A[x][y][t] += 1;
+            } else {
+                int oups = 10 + hits;
             }
-
 //            for (int i = -1; i <= 1; i++) {
 //                for (int j = -1; j <= 1; ++j) {
 //                    for (int k = -1; k <= 1; ++k) {
@@ -355,17 +381,20 @@ public class FingerprintImage
 
         private boolean isInside(int nx, int ny, int nt)
         {
-            return nx >= 0 && nx < width / gridStep &&
-                    ny >= 0 && ny < height / gridStep &&
+            return nx >= 0 && nx < xLength &&
+                    ny >= 0 && ny < yLength &&
                     nt >= 0 && nt < angleLength;
         }
 
         public TransformationTable(int imageWidth, int imageHeight)
         {
-            this.horizontalBound = imageWidth / 2;
-            this.verticalBound = imageHeight / 2;
+            this.horizontalBound = imageWidth;
+            this.verticalBound = imageHeight;
 
-            A = new int[imageWidth / gridStep][imageHeight / gridStep][angleLength];
+            this.xLength = 2 * horizontalBound / gridStep;
+            this.yLength = 2 * verticalBound / gridStep;
+
+            A = new int[xLength][yLength][angleLength];
         }
     }
 }

@@ -32,9 +32,9 @@ public class Program
         FingerprintImage originalImage = new FingerprintImage(fingerprintImage1);
         FingerprintImage compareImage = new FingerprintImage(fingerprintImage2);
 
-        for (Feature feature : compareImage.getFeatures()) {
-            feature.point.x -= 120;
-            feature.point.y += 21;
+        for (Feature feature : originalImage.getFeatures()) {
+//            feature.point.x -= 120;
+//            feature.point.y += 21;
             feature.angle += Math.PI / 12 * 5;
         }
 
