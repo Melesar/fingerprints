@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class GridPoint implements Serializable
 {
-    int x, y;
+    public int x, y;
     transient boolean isVisited;
 
     public GridPoint(int x, int y)

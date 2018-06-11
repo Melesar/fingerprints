@@ -1,3 +1,4 @@
+import com.melesar.fingerprints.Feature;
 import com.melesar.fingerprints.FingerprintImage;
 import com.melesar.fingerprints.IO.FingerprintWriter;
 import com.melesar.fingerprints.IO.Identificator;
@@ -30,6 +31,12 @@ public class Program
 
         FingerprintImage originalImage = new FingerprintImage(fingerprintImage1);
         FingerprintImage compareImage = new FingerprintImage(fingerprintImage2);
+
+        for (Feature feature : compareImage.getFeatures()) {
+            feature.point.x -= 120;
+            feature.point.y += 21;
+            feature.angle += Math.PI / 12 * 5;
+        }
 
         boolean isMatch = originalImage.isMatch(compareImage);
 
