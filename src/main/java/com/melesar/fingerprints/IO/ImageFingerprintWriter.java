@@ -37,9 +37,7 @@ public class ImageFingerprintWriter implements FingerprintWriter
             //Write features to file
             FingerprintsDatabase database = new FingerprintsDatabase();
             database.add(fingerprintImage.getFeatures());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
