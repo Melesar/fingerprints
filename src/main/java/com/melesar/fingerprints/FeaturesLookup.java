@@ -80,13 +80,16 @@ public class FeaturesLookup
             markPathVisited(currentPath);
             point = findStartingPoint();
         }
+    }
 
+    public void drawTracedLines(String fileName)
+    {
         if (!debugMode) {
             return;
         }
 
         try {
-            ImageIO.write(debugImage, "bmp", new File("trace.bmp"));
+            ImageIO.write(debugImage, "bmp", new File(fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -336,15 +339,24 @@ public class FeaturesLookup
         for (Feature f : features) {
             GridPoint point = f.point;
             for (int i = -3; i <= 3; i++) {
-                debugImage.setRGB(point.x + i, point.y + 3, f.color.getRGB());
-                debugImage.setRGB(point.x + i, point.y - 3, f.color.getRGB());
+                setColor(point.x + i, point.y + 3, f.color);
+                setColor(point.x + i, point.y - 3, f.color);
             }
 
             for (int i = -3; i <= 3; i++) {
-                debugImage.setRGB(point.x + 3, point.y + i, f.color.getRGB());
-                debugImage.setRGB(point.x - 3, point.y + i, f.color.getRGB());
+                setColor(point.x + 3, point.y + i, f.color);
+                setColor(point.x - 3, point.y + i, f.color);
             }
         }
+    }
+
+    private void setColor(int x, int y, Color color)
+    {
+        if (x < 0 || x >= debugImage.getWidth() || y < 0 || y >= debugImage.getHeight()) {
+            return;
+        }
+
+        debugImage.setRGB(x, y, color.getRGB());
     }
 
     private GridPoint trace (GridPoint start, double angle, int step)

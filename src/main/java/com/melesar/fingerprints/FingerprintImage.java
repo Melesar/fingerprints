@@ -72,6 +72,11 @@ public class FingerprintImage
         ImageIO.write(directionsMap, "bmp", new File("directions.bmp"));
     }
 
+    public void drawTraceLines(String fileName)
+    {
+        featuresLookup.drawTracedLines(fileName);
+    }
+
     public FingerprintImage(BufferedImage img)
     {
         initImage(img);
@@ -89,8 +94,9 @@ public class FingerprintImage
 
     private TransformationTable transform;
 
-    private final double angleTolerance = 0.1;
-    private final double distanceTolerance = 8;
+    private final double angleTolerance = Math.PI / 6;
+    private final double distanceTolerance = 20;
+    private final int featuresToMatch = 9;
 
     private int hits = 0;
 
@@ -146,7 +152,7 @@ public class FingerprintImage
                 }
 
                 if (areAnglesMatch(fThis.angle, fOther.angle) && fThis.isCloseTo(fOther, distanceTolerance)) {
-                    if (++featuresMatched >= 12) {
+                    if (++featuresMatched >= featuresToMatch) {
                         return true;
                     }
 
@@ -184,7 +190,7 @@ public class FingerprintImage
     private void initImage(BufferedImage img)
     {
         if (img == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input image cannot be null");
         }
 
         imageData = img;
@@ -361,22 +367,8 @@ public class FingerprintImage
 
             if (isInside(x, y, t)) {
                 A[x][y][t] += 1;
-            } else {
-                int oups = 10 + hits;
             }
-//            for (int i = -1; i <= 1; i++) {
-//                for (int j = -1; j <= 1; ++j) {
-//                    for (int k = -1; k <= 1; ++k) {
-//                        int nx = x + i;
-//                        int ny = y + j;
-//                        int nt = t + k;
-//
-//                        if (isInside(nx, ny, nt)) {
-//                            A[nx][ny][nt] += 1;
-//                        }
-//                    }
-//                }
-//            }
+
         }
 
         private boolean isInside(int nx, int ny, int nt)

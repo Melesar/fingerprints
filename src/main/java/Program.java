@@ -1,34 +1,39 @@
-import com.melesar.fingerprints.IO.FingerprintWriter;
-import com.melesar.fingerprints.IO.Identificator;
-import com.melesar.fingerprints.IO.ScannerFingerprintIdentificator;
-import com.melesar.fingerprints.IO.ScannerFingerprintWriter;
-import com.melesar.gui.LoginForm;
+import com.melesar.fingerprints.FingerprintImage;
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 
 public class Program
 {
     public static void main(String[] args) throws IOException
     {
-        LoginForm form = new LoginForm();
-        FingerprintWriter fingerprintWriter = new ScannerFingerprintWriter();
-        Identificator identificator = new ScannerFingerprintIdentificator();
+        final String folderName = "C:\\Users\\Serg\\Desktop\\DB4_B";
+        final File folder = new File(folderName);
+        final File tracesFolder = new File(folderName + "\\traces");
+        tracesFolder.mkdir();
 
-        form.setFingerprintWriter(fingerprintWriter);
-        form.setIdentificator(identificator);
-        form.setVisible(true);
+        File[] images = folder.listFiles();
+        FingerprintImage reference = new FingerprintImage(ImageIO.read(images[0]));
+        for (int i = 1; i < 8; i++) {
+            System.out.println(i + ".");
+            FingerprintImage cmp = new FingerprintImage(ImageIO.read(images[i]));
+            if (cmp.isMatch(reference)) {
+                System.out.println("Matched");
+            }
 
-//        URL imageUrl1 = Program.class.getClassLoader().getResource("fingerprint_1.jpg");
-//        URL imageUrl2 = Program.class.getClassLoader().getResource("fingerprint_1.jpg");
-//
-//        BufferedImage fingerprintImage1 = ImageIO.read(imageUrl1);
-//        BufferedImage fingerprintImage2 = ImageIO.read(imageUrl2);
-//
-//        FingerprintImage originalImage = new FingerprintImage(fingerprintImage1);
-//        FingerprintImage compareImage = new FingerprintImage(fingerprintImage2);
-//
-//        boolean isMatch = originalImage.isMatch(compareImage);
-//
-//        System.out.println(isMatch);
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    private static void drawTraceLines(File tracesFolder, File f, FingerprintImage fingerprint)
+    {
+        String traceFileName = f.getName().replaceFirst("[.][^.]+$", "");
+        traceFileName = String.format("%s\\%s_trace.bmp", tracesFolder.getAbsolutePath(), traceFileName);
+        fingerprint.drawTraceLines(traceFileName);
     }
 }

@@ -9,7 +9,7 @@ class DirectionCalculator
 {
     private BufferedImage imageData;
 
-    private final int Alpha = 15;
+    private final int Alpha = 8;
 
     public Directions calculate()
     {
@@ -65,7 +65,6 @@ class DirectionCalculator
 
             }
         }
-//        directionMap.addDirection(startX, startY, angle);
     }
 
     private double getColorBrightness(int x, int y)
