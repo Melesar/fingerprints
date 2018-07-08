@@ -81,13 +81,14 @@ public class FingerprintImage
     {
         initImage(img);
         toGreyscale();
-        applyFilter();
+        binarize();
+        //applyFilter();
 
         DirectionCalculator calculator = new DirectionCalculator(imageData);
         directions = calculator.calculate();
 
         ImageBorders borders = new ImageBorders(imageData);
-        featuresLookup = new FeaturesLookup(img, directions, borders);
+        featuresLookup = new FeaturesLookup(imageData, directions, borders);
 
         transform = new TransformationTable(width, height);
     }
@@ -128,8 +129,7 @@ public class FingerprintImage
             }
         }
 
-        System.out.println(String.format("Voted for index %d: %d", TargetIndex, hits));
-        transform.displayVotedAngles();
+        //transform.displayVotedAngles();
 
         GridPoint pointOffset = new GridPoint(0, 0);
         double angleOffset = transform.getMaxVote(pointOffset);
@@ -139,7 +139,7 @@ public class FingerprintImage
             fOther.angle += angleOffset;
         }
 
-        System.out.println(String.format("Transformation applied: offset = %s, angle = %s", pointOffset, angleOffset));
+        System.out.print(String.format("Transformation applied: offset = %s, angle = %s", pointOffset, angleOffset));
     }
 
     private boolean isMatch(ArrayList<Feature> otherFeatures)
@@ -162,7 +162,7 @@ public class FingerprintImage
             }
         }
 
-        System.out.println(String.format("Match failed. Features matched: %d", featuresMatched));
+        System.out.println(String.format(" Match failed. Features matched: %d", featuresMatched));
 
         return false;
     }
@@ -207,6 +207,36 @@ public class FingerprintImage
                 int channel = (int) (brightness * 255);
                 Color c = new Color(channel, channel, channel);
                 imageData.setRGB(width, height, c.getRGB());
+            }
+        }
+    }
+
+    private void binarize()
+    {
+        int[] brightnessQuantities = new int [256];
+        Arrays.fill(brightnessQuantities, 0);
+
+        int maxQuantity = 0;
+        int maxBrightnessValue = 0;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                int brightness = (int) (getColorBrightness(x, y) * 255);
+                brightnessQuantities[brightness] += 1;
+
+                if (brightnessQuantities[brightness] > maxQuantity) {
+                    maxBrightnessValue = brightness;
+                    maxQuantity = brightnessQuantities[brightness];
+                }
+            }
+        }
+
+        final int brightnessRange = 4;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                int brightness = (int) (getColorBrightness(x, y) * 255);
+                if (brightness < maxBrightnessValue - brightnessRange) {
+                    imageData.setRGB(x, y, 0);
+                }
             }
         }
     }
@@ -259,7 +289,7 @@ public class FingerprintImage
 
         private int[][][] A;
 
-        private final double angleStep = Math.PI / 12;
+        private final double angleStep = Math.PI / 20;
         private final int gridStep = 3;
         private final int angleLength = (int) (angleBound / angleStep);
 

@@ -9,7 +9,7 @@ class DirectionCalculator
 {
     private BufferedImage imageData;
 
-    private final int Alpha = 8;
+    private final int Alpha = 12;
 
     public Directions calculate()
     {
@@ -62,7 +62,6 @@ class DirectionCalculator
         for (int x = startX; x < startX + Alpha; x++) {
             for (int y = startY; y < startY + Alpha; y++) {
                 directionMap.addDirection(x, y, angle);
-
             }
         }
     }

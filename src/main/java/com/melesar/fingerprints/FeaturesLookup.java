@@ -100,7 +100,7 @@ public class FeaturesLookup
 
     private void traceLine(GridPoint start, double angleOffset, ArrayList<Vector2> currentPath)
     {
-        final int traceStep = 5;
+        final int traceStep = 2;
         double angle = angleOffset + directionsMap.getDirection(start.x, start.y);
         tracingAngles.clear();
 
@@ -115,15 +115,15 @@ public class FeaturesLookup
 
             addAngle(angle);
             end = getSectionMinimum(end);
-            ArrayList<Vector2> path = Utilites.bresenham(sectionStart.x, sectionStart.y, end.x, end.y);
+            ArrayList<Vector2> newPathStep = Utilites.bresenham(sectionStart.x, sectionStart.y, end.x, end.y);
 
-            if (shouldStop(path)) {
+            if (shouldStop(newPathStep, currentPath)) {
                 break;
             }
 
-            currentPath.addAll(path);
+            currentPath.addAll(newPathStep);
 
-            for (Vector2 p : path) {
+            for (Vector2 p : newPathStep) {
                 visitedPoints[(int) p.x][(int) p.y] = true;
             }
 
@@ -135,8 +135,8 @@ public class FeaturesLookup
                 continue;
             }
 
-            for (int i = 0; i < path.size(); i++) {
-                Vector2 p = path.get(i);
+            for (int i = 0; i < newPathStep.size(); i++) {
+                Vector2 p = newPathStep.get(i);
                 Color color = i > 0 ? Color.CYAN : Color.RED;
                 debugImage.setRGB((int) p.x, (int) p.y, color.getRGB());
             }
@@ -150,32 +150,27 @@ public class FeaturesLookup
         newFeatures.clear();
     }
 
-    private boolean shouldStop(ArrayList<Vector2> path)
+    private boolean shouldStop(ArrayList<Vector2> pathStep, ArrayList<Vector2> fullPath)
     {
-        Vector2 endPoint = path.get(path.size() - 1);
+        Vector2 endPoint = pathStep.get(pathStep.size() - 1);
         GridPoint end = new GridPoint((int) endPoint.x, (int) endPoint.y);
 
         if (!borders.isInside(end.x, end.y)) {
             return true;
         }
 
-        double pathBrightness = 0;
-        for (Vector2 p : path) {
-            GridPoint point = new GridPoint((int) p.x, (int) p.y);
-            Color color = new Color(img.getRGB(point.x, point.y));
-            pathBrightness += Utilites.getColorBrightness(color);
-        }
-
-        if (pathBrightness / path.size() > 0.9) {
+        double pathStepBrightness = getPathBrightness(pathStep);
+        double fullPathBrightness = getPathBrightness(fullPath);
+        if (pathStepBrightness - fullPathBrightness > 0.08) {
             registerFeature(end, Color.GREEN);
             return true;
         }
 
-        double angle = directionsMap.getDirection(end.x, end.y);
+        /*double angle = directionsMap.getDirection(end.x, end.y);
         if (!compareAngle(angle)) {
-            //registerFeature(end, Color.BLUE);
+//            registerFeature(end, Color.BLUE);
             return true;
-        }
+        }*/
 
 
         if (visitedPoints[end.x][end.y]) {
@@ -184,6 +179,21 @@ public class FeaturesLookup
         }
 
         return false;
+    }
+
+    private double getPathBrightness(ArrayList<Vector2> path)
+    {
+        if (path.size() == 0) {
+            return 1;
+        }
+
+        double pathBrightness = 0;
+        for (Vector2 p : path) {
+            GridPoint point = new GridPoint((int) p.x, (int) p.y);
+            Color color = new Color(img.getRGB(point.x, point.y));
+            pathBrightness += Utilites.getColorBrightness(color);
+        }
+        return pathBrightness / path.size();
     }
 
     private int startPointIndex = 0;
@@ -294,7 +304,7 @@ public class FeaturesLookup
 
     private void markPathVisited(Iterable<Vector2> path)
     {
-        final int range = 5;
+        final int range = 3;
         for(Vector2 p : path) {
             GridPoint point = new GridPoint((int)p.x, (int)p.y);
 
@@ -315,7 +325,12 @@ public class FeaturesLookup
     {
         final double distanceTolerance = 15;
 
+//        double featureAngle = directionsMap.getDirection(point.x, point.y);
+//        featureAngle += featureAngle < 0 ? 2 * Math.PI : 0;
+//        Feature newFeature = new Feature(point, featureAngle, color);
+
         Feature newFeature = new Feature(point, directionsMap.getDirection(point.x, point.y), color);
+
         if (borders.isCloseToBorder(newFeature.point.x, newFeature.point.y, distanceTolerance)) {
             return;
         }
@@ -382,6 +397,10 @@ public class FeaturesLookup
 
     private boolean compareAngle(double angle)
     {
+//        final double angleThreshold = Math.PI / 5;
+//        double lastAngle = tracingAngles.peek();
+//        return Math.abs(lastAngle - angle) <= angleThreshold ||
+//                Math.abs(lastAngle - angle + Math.PI) <= angleThreshold;
         if (tracingAngles.size() < MaxAngles) {
             return true;
         }
