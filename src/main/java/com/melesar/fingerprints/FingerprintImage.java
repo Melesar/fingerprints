@@ -81,7 +81,8 @@ public class FingerprintImage
     {
         initImage(img);
         toGreyscale();
-        binarize();
+        applyLevels();
+        //binarize();
         //applyFilter();
 
         DirectionCalculator calculator = new DirectionCalculator(imageData);
@@ -207,6 +208,60 @@ public class FingerprintImage
                 int channel = (int) (brightness * 255);
                 Color c = new Color(channel, channel, channel);
                 imageData.setRGB(width, height, c.getRGB());
+            }
+        }
+    }
+
+    private void applyLevels()
+    {
+        int[] brightnessQuantities = new int [256];
+        Arrays.fill(brightnessQuantities, 0);
+        for (int w = 0; w < width; w++) {
+            for (int h = 0; h < height; h++) {
+                Color c = new Color(imageData.getRGB(w, h));
+                int brightness = (int) (Utilites.getColorBrightness(c) * 255);
+
+                brightnessQuantities[brightness] += 1;
+            }
+        }
+
+        int accumulator = 0;
+        int leftLevel = 0;
+        final int accumulatorThreshold = 100;
+        for (int i = 0; i < 256; i++) {
+            accumulator += brightnessQuantities[i];
+            if (accumulator >= accumulatorThreshold) {
+                leftLevel = i;
+                break;
+            }
+        }
+
+        accumulator = 0;
+        int rightLevel = 255;
+        for (int i = 255; i >= 0; i--) {
+            accumulator += brightnessQuantities[i];
+            if (accumulator >= accumulatorThreshold) {
+                rightLevel = i;
+                break;
+            }
+        }
+
+        for (int w = 0; w < width; w++) {
+            for (int h = 0; h < height; h++) {
+                int brightness = (int) (getColorBrightness(w, h) * 255);
+
+                if (brightness < leftLevel) {
+                    imageData.setRGB(w, h, 0);
+                    continue;
+                }
+
+                if (brightness > rightLevel) {
+                    imageData.setRGB(w, h, Color.white.getRGB());
+                }
+
+                double t = (double) (brightness - leftLevel) / (rightLevel - leftLevel);
+                int newBrightness = (int) (255 * t);
+                imageData.setRGB(w, h, Utilites.getColor(newBrightness).getRGB());
             }
         }
     }

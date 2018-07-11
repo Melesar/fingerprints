@@ -161,7 +161,7 @@ public class FeaturesLookup
 
         double pathStepBrightness = getPathBrightness(pathStep);
         double fullPathBrightness = getPathBrightness(fullPath);
-        if (pathStepBrightness - fullPathBrightness > 0.08) {
+        if (pathStepBrightness > 0.99) {
             registerFeature(end, Color.GREEN);
             return true;
         }

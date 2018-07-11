@@ -46,12 +46,17 @@ public class Utilites
 
     private static final double brightnessMultiplier = (double) 1 / 3 / 255;
 
-    static double getColorBrightness(Color color)
+    public static double getColorBrightness(Color color)
     {
         int r = color.getRed();
         int g = color.getGreen();
         int b = color.getBlue();
 
         return (double) (r + g + b) * brightnessMultiplier;
+    }
+
+    static Color getColor(int brightness)
+    {
+        return new Color(brightness, brightness, brightness);
     }
 }
