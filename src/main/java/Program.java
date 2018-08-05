@@ -4,21 +4,25 @@ import com.melesar.fingerprints.Utilites;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class Program
 {
     public static void main(String[] args) throws IOException
     {
-//        final String fileName = "C:\\Users\\Serg\\Desktop\\DB4_B\\101_1.tif";
-//        FingerprintImage f = new FingerprintImage(ImageIO.read(new File(fileName)));
-        compareFingerprints();
-        //histogram();
+        InputStream in = Program.class.getResourceAsStream("");
+        BufferedReader bf = new BufferedReader(new InputStreamReader(in));
+        String resource;
+
+        while ((resource = bf.readLine()) != null) {
+            System.out.println(resource);
+        }
+
+        //compareFingerprints();
     }
 
     private static void histogram() throws IOException
@@ -89,13 +93,13 @@ public class Program
             System.out.println("Set #" + (baseSetIndex + 1));
             final int setLength = 8;
             final int referenceIndex = baseSetIndex * setLength;
-            FingerprintImage reference = new FingerprintImage(ImageIO.read(images[referenceIndex]));
+            FingerprintImage reference = FingerprintImage.create(images[referenceIndex]);
 
             drawTraceLines(tracesFolder, images[referenceIndex], reference);
 
             for (int i = referenceIndex + 1; i < referenceIndex + setLength; i++) {
                 System.out.print(i - referenceIndex + ". ");
-                FingerprintImage cmp = new FingerprintImage(ImageIO.read(images[i]));
+                FingerprintImage cmp = FingerprintImage.create(images[i]);
 
                 drawTraceLines(tracesFolder, images[i], cmp);
 

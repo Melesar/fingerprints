@@ -9,7 +9,7 @@ class DirectionCalculator
 {
     private BufferedImage imageData;
 
-    private final int Alpha = 8;
+    private final int Alpha = 10;
 
     public Directions calculate()
     {

@@ -26,7 +26,7 @@ public class FeaturesLookup
 
     private boolean debugMode = true;
     private boolean showTracedLines = true;
-    private boolean showFeatures = true;
+    private boolean showFeatures = false;
 
     public ArrayList<Feature> getFeatures()
     {
@@ -161,7 +161,8 @@ public class FeaturesLookup
 
         double pathStepBrightness = getPathBrightness(pathStep);
         double fullPathBrightness = getPathBrightness(fullPath);
-        if (pathStepBrightness > 0.99) {
+        if (pathStepBrightness > 0.9) {
+        //if (pathStepBrightness - fullPathBrightness > 0.08) {
             registerFeature(end, Color.GREEN);
             return true;
         }

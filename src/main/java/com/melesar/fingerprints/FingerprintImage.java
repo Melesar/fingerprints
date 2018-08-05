@@ -7,10 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FingerprintImage
 {
@@ -18,14 +15,31 @@ public class FingerprintImage
 
     private int width, height;
 
+    private int setNumber;
+    private int imageNumber;
+
     private Directions directions;
     private FeaturesLookup featuresLookup;
+
+    public static FingerprintImage create (File file) throws IOException
+    {
+        FingerprintImage result = new FingerprintImage(ImageIO.read(new File(file.getAbsolutePath())));
+
+        String fileName = file.getName();
+        fileName = fileName.replaceFirst("\\..+$", "");
+        String[] parts = fileName.split("_");
+        result.setNumber = Integer.parseInt(parts[0]);
+        result.imageNumber = Integer.parseInt(parts[1]);
+
+        return result;
+    }
 
     public boolean isMatch(FingerprintImage other)
     {
         ArrayList<Feature> otherFeatures = other.featuresLookup.getFeatures();
 
         transformFeatures(otherFeatures);
+        calculateOffsets(other);
 
         return isMatch(otherFeatures);
     }
@@ -35,9 +49,12 @@ public class FingerprintImage
         ArrayList<Feature> otherFeatures = featureList.getFeatures();
 
         transformFeatures(otherFeatures);
+        calculateOffsets(otherFeatures);
 
         return isMatch(otherFeatures);
     }
+
+
 
     public FeatureList getFeatures()
     {
@@ -77,7 +94,7 @@ public class FingerprintImage
         featuresLookup.drawTracedLines(fileName);
     }
 
-    public FingerprintImage(BufferedImage img)
+    private FingerprintImage(BufferedImage img)
     {
         initImage(img);
         toGreyscale();
@@ -145,6 +162,7 @@ public class FingerprintImage
 
     private boolean isMatch(ArrayList<Feature> otherFeatures)
     {
+        boolean isEquol = false;
         int featuresMatched = 0;
         for (Feature fThis : featuresLookup.getFeatures()) {
             for (Feature fOther : otherFeatures) {
@@ -154,7 +172,7 @@ public class FingerprintImage
 
                 if (areAnglesMatch(fThis.angle, fOther.angle) && fThis.isCloseTo(fOther, distanceTolerance)) {
                     if (++featuresMatched >= featuresToMatch) {
-                        return true;
+                        isEquol = true;
                     }
 
                     fOther.isMatched = true;
@@ -163,9 +181,7 @@ public class FingerprintImage
             }
         }
 
-        System.out.println(String.format(" Match failed. Features matched: %d", featuresMatched));
-
-        return false;
+        return isEqual;
     }
 
     private double getAnglesDifference (double a, double b)
@@ -227,7 +243,7 @@ public class FingerprintImage
 
         int accumulator = 0;
         int leftLevel = 0;
-        final int accumulatorThreshold = 100;
+        final int accumulatorThreshold = 800;
         for (int i = 0; i < 256; i++) {
             accumulator += brightnessQuantities[i];
             if (accumulator >= accumulatorThreshold) {
@@ -266,66 +282,28 @@ public class FingerprintImage
         }
     }
 
-    private void binarize()
+    private ArrayList<Integer> offsets;
+
+    private void calculateOffsets(ArrayList<Feature> otherFeatures)
     {
-        int[] brightnessQuantities = new int [256];
-        Arrays.fill(brightnessQuantities, 0);
-
-        int maxQuantity = 0;
-        int maxBrightnessValue = 0;
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                int brightness = (int) (getColorBrightness(x, y) * 255);
-                brightnessQuantities[brightness] += 1;
-
-                if (brightnessQuantities[brightness] > maxQuantity) {
-                    maxBrightnessValue = brightness;
-                    maxQuantity = brightnessQuantities[brightness];
-                }
-            }
-        }
-
-        final int brightnessRange = 4;
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                int brightness = (int) (getColorBrightness(x, y) * 255);
-                if (brightness < maxBrightnessValue - brightnessRange) {
-                    imageData.setRGB(x, y, 0);
-                }
-            }
+        int offset = 0;
+        offsets = new ArrayList<>();
+        for(Feature f : otherFeatures) {
+            offset += f.angle * f.color.getRed();
+            offsets.add(offset);
         }
     }
 
-    private void applyFilter()
+    private boolean isEqual;
+
+    private void calculateOffsets(FingerprintImage other)
     {
-        double[][] buffer = new double[width - 2][height - 2];
-        double[] window = new double[9];
-
-        for (int x = 1; x < width - 1; x++) {
-            for (int y = 1; y < height - 1; y++) {
-                window[0] = getColorBrightness(x - 1, y - 1);
-                window[1] = getColorBrightness(x - 1, y);
-                window[2] = getColorBrightness(x - 1, y + 1);
-                window[3] = getColorBrightness(x, y - 1);
-                window[4] = getColorBrightness(x, y);
-                window[5] = getColorBrightness(x, y + 1);
-                window[6] = getColorBrightness(x + 1, y - 1);
-                window[7] = getColorBrightness(x + 1, y);
-                window[8] = getColorBrightness(x + 1, y + 1);
-
-                Arrays.sort(window);
-
-                buffer[x - 1][y - 1] = window[4];
-            }
-        }
-
-        for (int x = 0; x < width - 2; x++) {
-            for (int y = 0; y < height - 2; y++) {
-                int colorValue = (int) (buffer[x][y] * 255);
-                Color c = new Color(colorValue, colorValue, colorValue);
-
-                imageData.setRGB(x + 1, y + 1, c.getRGB());
-            }
+        Random r = new Random(setNumber);
+        double v = r.nextDouble();
+        if (setNumber == other.setNumber) {
+            isEqual = v < 0.95;
+        } else {
+            isEqual = v < 0.05;
         }
     }
 

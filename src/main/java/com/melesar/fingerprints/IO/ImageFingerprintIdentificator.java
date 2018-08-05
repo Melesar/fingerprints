@@ -51,10 +51,8 @@ public class ImageFingerprintIdentificator implements Identificator
             return null;
         }
 
-        BufferedImage img;
         try {
-            img = ImageIO.read(fileChooser.getSelectedFile());
-            return new FingerprintImage(img);
+            return FingerprintImage.create(fileChooser.getSelectedFile());
         } catch (IOException e) {
             return null;
         }

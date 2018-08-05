@@ -31,8 +31,7 @@ public class ImageFingerprintWriter implements FingerprintWriter
         }
 
         try {
-            BufferedImage img = ImageIO.read(fileChooser.getSelectedFile());
-            FingerprintImage fingerprintImage = new FingerprintImage(img);
+            FingerprintImage fingerprintImage = FingerprintImage.create(fileChooser.getSelectedFile());
 
             //Write features to file
             FingerprintsDatabase database = new FingerprintsDatabase();
