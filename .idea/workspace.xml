@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b6ad205-c5b0-44a9-8535-56a8945fc7fa" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/DirectionCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/DirectionCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FeaturesLookup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FeaturesLookup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintIdentificator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintIdentificator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerDevice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintIdentificator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fingerprint.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fingerprint_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/gui/LoginForm.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/gui/LoginForm.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Program.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -33,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Program.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Program.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+            <state relative-caret-position="102">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -45,58 +40,47 @@
       <file leaf-file-name="FingerprintImage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            <state relative-caret-position="340">
+              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageFingerprintIdentificator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintIdentificator.java">
+      <file leaf-file-name="FingerprintsForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="36" column="13" selection-start-line="34" selection-start-column="17" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="396">
+              <caret line="47" column="48" lean-forward="true" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageFingerprintWriter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java">
+      <file leaf-file-name="ImageIcon.java" pinned="false" current-in-tab="true">
+        <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/ImageIcon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="33" column="101" selection-start-line="33" selection-start-column="101" selection-end-line="33" selection-end-column="101" />
+            <state relative-caret-position="41">
+              <caret line="237" column="11" selection-start-line="237" selection-start-column="11" selection-end-line="237" selection-end-column="11" />
+              <folding>
+                <element signature="e#6685#6686#0" expanded="true" />
+                <element signature="e#6742#6743#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FeaturesLookup.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FeaturesLookup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2533">
-              <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DirectionCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/DirectionCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="101_1_trace.bmp" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/DB4_B/traces/101_1_trace.bmp">
-          <provider selected="true" editor-type-id="images" />
+      <file leaf-file-name="FingerprintsForm.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file leaf-file-name="Utilites.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="379">
+              <caret line="53" column="81" selection-start-line="53" selection-start-column="81" selection-end-line="53" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -163,13 +147,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintIdentifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintIdentificator.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/DirectionCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FeaturesLookup.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintIdentificator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form" />
+        <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" />
         <option value="$PROJECT_DIR$/src/main/java/Program.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java" />
       </list>
     </option>
   </component>
@@ -203,6 +189,54 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Production">
           <expand>
@@ -279,39 +313,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -325,21 +326,22 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint" />
-      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\src\main\java" />
-      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\src\main\resources" />
-      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\src\test\resources" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="data" />
       <recent name="fingerprints" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\bin" />
+      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\Fingerprints\src\main\resources" />
+      <recent name="D:\Projects\Fingerprints\src\main\resources\com.melesar.fingerprints" />
+      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint" />
+      <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\src\main\java" />
       <recent name="C:\Users\Serg\IdeaProjects\Fingerprint\src\main\resources" />
     </key>
   </component>
@@ -641,22 +643,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32838285" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.0" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32838285" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32943678" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
+      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33509833" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.32838285" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
@@ -669,28 +676,32 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23676248" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50507617" side_tool="true" weight="0.24962178" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32837406" />
       <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32838285" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="6" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.32838285" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="Coverage" order="6" sideWeight="0.50507617" side_tool="true" weight="0.24962178" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.0" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32838285" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.0" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Favorites" order="5" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -810,41 +821,8 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Inst/Java/src.zip!/java/lang/Double.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="834" column="23" selection-start-line="834" selection-start-column="23" selection-end-line="834" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5621">
-          <caret line="136" column="13" selection-start-line="136" selection-start-column="13" selection-end-line="136" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/ImageBorders.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/io/ByteArrayOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-980">
-          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/com/sun/org/apache/xalan/internal/utils/FeatureManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/io/ByteArrayOutputStream.java" />
+    <entry file="jar://D:/Inst/Java/src.zip!/com/sun/org/apache/xalan/internal/utils/FeatureManager.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Feature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -852,13 +830,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/FingerprintWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -869,34 +841,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/LoginForm.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/JFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="122" column="31" lean-forward="true" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="134" column="29" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="147" column="33" selection-start-line="147" selection-start-column="33" selection-end-line="147" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/JFrame.java" />
+    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Frame.java" />
+    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Window.java" />
+    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Container.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/LoginForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -951,20 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerDevice.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintIdentificator.java" />
-    <entry file="jar://$PROJECT_DIR$/imageio-tiff-3.3.2.jar!/com/twelvemonkeys/imageio/plugins/tiff/TIFFCustom.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/imageio-tiff-3.3.2.jar!/com/twelvemonkeys/imageio/plugins/tiff/CCITTFaxDecoderStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1326">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/imageio-tiff-3.3.2.jar!/com/twelvemonkeys/imageio/plugins/tiff/TIFFCustom.class" />
+    <entry file="jar://$PROJECT_DIR$/imageio-tiff-3.3.2.jar!/com/twelvemonkeys/imageio/plugins/tiff/CCITTFaxDecoderStream.class" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -979,54 +915,19 @@
     <entry file="file://$PROJECT_DIR$/101_5_trace.bmp" />
     <entry file="file://$PROJECT_DIR$/101_6_trace.bmp" />
     <entry file="file://$PROJECT_DIR$/101_7_trace.bmp" />
-    <entry file="jar://D:/Inst/Java/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="220" column="25" selection-start-line="220" selection-start-column="25" selection-end-line="220" selection-end-column="25" />
-          <folding>
-            <element signature="e#8525#8526#0" expanded="true" />
-            <element signature="e#8607#8608#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/util/Collections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="4984" column="22" lean-forward="true" selection-start-line="4984" selection-start-column="22" selection-end-line="4984" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Inst/Java/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2879" column="23" selection-start-line="2879" selection-start-column="23" selection-end-line="2879" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/binarized.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/histogram.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/lang/Math.java" />
+    <entry file="jar://D:/Inst/Java/src.zip!/java/util/Collections.java" />
+    <entry file="jar://D:/Inst/Java/src.zip!/java/util/Arrays.java" />
+    <entry file="file://$PROJECT_DIR$/binarized.bmp" />
+    <entry file="file://$PROJECT_DIR$/histogram.bmp" />
     <entry file="file://$PROJECT_DIR$/directions.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/DB4_B/traces/101_1_trace.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/DB4_B/traces/101_1_trace.bmp" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Directions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/DirectionCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1037,21 +938,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintWriter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="33" column="101" selection-start-line="33" selection-start-column="101" selection-end-line="33" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintIdentificator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1059,23 +946,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fingerprint_1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fingerprint.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fingerprint_1.jpg" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fingerprint.jpg" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        <state relative-caret-position="374">
+          <caret line="33" column="76" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/DirectionCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="53" column="81" selection-start-line="53" selection-start-column="81" selection-end-line="53" selection-end-column="81" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        <state relative-caret-position="102">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="47" column="48" lean-forward="true" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/ImageIcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="237" column="11" selection-start-line="237" selection-start-column="11" selection-end-line="237" selection-end-column="11" />
+          <folding>
+            <element signature="e#6685#6686#0" expanded="true" />
+            <element signature="e#6742#6743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
