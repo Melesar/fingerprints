@@ -3,9 +3,7 @@ package com.melesar.gui;
 import com.melesar.fingerprints.Utilites;
 
 import javax.swing.*;
-import javax.swing.plaf.IconUIResource;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.net.URL;
 
 public class FingerprintsForm extends JFrame
 {
@@ -30,6 +28,7 @@ public class FingerprintsForm extends JFrame
         form.setBounds(300, 300, 700, 500);
         form.setResizable(true);
         form.setVisible(true);
+        form.createUIComponents();
 
         instance = form;
 
@@ -43,11 +42,9 @@ public class FingerprintsForm extends JFrame
 
     private void createUIComponents()
     {
-        try {
-            BufferedImage img = Utilites.loadResourceImage("101_1.tif");
-            referenceFingerprint.setIcon(new ImageIcon(img));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        URL resource = Utilites.class.getResource("images/101_1.tif");
+        System.out.println(new ImageIcon(resource));
+        referenceFingerprint.setBounds(0, 0, 150,150);
+        referenceFingerprint.setIcon(new ImageIcon(resource));
     }
 }

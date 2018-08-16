@@ -51,7 +51,7 @@ public class Utilites
 
     public static BufferedImage loadResourceImage(String name) throws IOException
     {
-        InputStream in = Utilites.class.getClassLoader().getResourceAsStream(name);
+        InputStream in = Utilites.class.getResourceAsStream(name);
         BufferedReader bf = new BufferedReader(new InputStreamReader(in));
         String resource;
 
