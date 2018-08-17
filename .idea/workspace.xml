@@ -2,175 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b6ad205-c5b0-44a9-8535-56a8945fc7fa" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenterDrawer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/101_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/101_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/102_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/102_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/103_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/103_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/104_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/104_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/105_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/105_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/106_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/106_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/107_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/107_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/108_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/108_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/109_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/109_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_2.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_2.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_3.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_3.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_4.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_4.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_5.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_5.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_6.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_6.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_7.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_7.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/110_8.tif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/melesar/fingerprints/images/110_8.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_1.tif" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/melesar/fingerprints/images/101_1.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/101_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/102_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/103_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/104_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/105_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/106_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/107_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/108_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/109_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_1.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_2.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_3.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_4.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_5.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_6.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_7.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/110_8.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Program.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -192,53 +29,38 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Program.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-              <folding>
-                <element signature="e#450#451#0" expanded="true" />
-              </folding>
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FingerprintImage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java">
+      <file leaf-file-name="FingerprintPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="476">
+              <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
               <folding>
-                <element signature="e#2674#2675#0" expanded="true" />
-                <element signature="e#2706#2707#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#350#351#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#856#857#0" expanded="true" />
+                <marker date="1534536176670" expanded="true" signature="1337:1730" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FingerprintsForm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FingerprintsForm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+            <state relative-caret-position="100">
+              <caret line="72" column="54" lean-forward="true" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FingerprintPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utilites.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -309,12 +131,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FeaturesLookup.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintIdentificator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFingerprintWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java" />
         <option value="$PROJECT_DIR$/src/main/java/Program.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenterDrawer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java" />
       </list>
     </option>
   </component>
@@ -348,104 +171,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="melesar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="melesar" type="462c0819:PsiDirectoryNode" />
-              <item name="fingerprints" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="melesar" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fingerprints" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fingerprints" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
-              <item name="com.melesar" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
-              <item name="com.melesar" type="1f31426a:PackageElementNode" />
-              <item name="fingerprints" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Production">
           <expand>
@@ -522,13 +247,112 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="melesar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="melesar" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="melesar" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="FingerprintsForm" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fingerprint" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
+              <item name="com.melesar" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Fingerprint" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Fingerprint" type="616d4139:PackageViewModuleNode" />
+              <item name="com.melesar" type="1f31426a:PackageElementNode" />
+              <item name="fingerprints" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Serg/IdeaProjects/Fingerprint/src/main/java/com/melesar/fingerprints/FingerprintImage.java" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;jar://D:/Inst/Java/src.zip!/javax/swing/JList.java" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value=".txt" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/melesar/fingerprints" />
@@ -853,84 +677,80 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32838285" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.32943678" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.44554454" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
-      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.0" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18154311" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.0" />
       <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Coverage" order="6" sideWeight="0.50507617" side_tool="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32838285" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32943678" />
-      <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.32838285" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.0" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32837406" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="3" sideWeight="0.49492386" weight="0.24962178" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32838285" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32837406" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.0" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.32838285" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50507617" side_tool="true" weight="0.24962178" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32838285" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.0" />
       <window_info id="Capture Tool" order="4" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.0" />
-      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50507617" side_tool="true" weight="0.24962178" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -978,23 +798,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://D:/Inst/Java/src.zip!/java/lang/Class.java</url>
-          <line>2387</line>
-          <properties />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="184" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="185" />
+      <option name="time" value="188" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1056,56 +863,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/JFrame.java" />
-    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Frame.java" />
-    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Window.java" />
-    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Container.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/LoginForm.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/FingerprintsDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FeatureList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/GridPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/Vector2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trace.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ImageFileFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/Identificator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerDevice.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/IO/ScannerFingerprintIdentificator.java" />
     <entry file="jar://$PROJECT_DIR$/imageio-tiff-3.3.2.jar!/com/twelvemonkeys/imageio/plugins/tiff/TIFFCustom.class" />
@@ -1173,21 +930,115 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/ImageIcon.java" />
     <entry file="jar://D:/Inst/Java/src.zip!/java/lang/ClassLoader.java" />
-    <entry file="jar://D:/Inst/Java/src.zip!/java/lang/Class.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/LayoutManager.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/LayoutManager.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Container.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/FlowLayout.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+        <state relative-caret-position="714">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Container.java">
+    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="1151" column="35" lean-forward="true" selection-start-line="1151" selection-start-column="35" selection-end-line="1151" selection-end-column="35" />
+        <state relative-caret-position="5831">
+          <caret line="415" column="21" selection-start-line="415" selection-start-column="21" selection-end-line="415" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/ListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-236">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/util/Enumeration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="60" column="17" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/util/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="337" column="19" selection-start-line="337" selection-start-column="19" selection-end-line="337" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/AbstractListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-332">
+          <caret line="48" column="62" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/DefaultListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="180" column="27" selection-start-line="180" selection-start-column="27" selection-end-line="180" selection-end-column="27" />
           <folding>
-            <element signature="e#38176#38177#0" expanded="true" />
-            <element signature="e#38222#38223#0" expanded="true" />
+            <element signature="e#5070#5071#0" expanded="true" />
+            <element signature="e#5112#5113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="2387" selection-start-line="2387" selection-end-line="2387" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/JScrollPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="321" column="11" selection-start-line="321" selection-start-column="11" selection-end-line="321" selection-end-column="11" />
+          <folding>
+            <element signature="e#10946#10947#0" expanded="true" />
+            <element signature="e#11034#11035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/SwingUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="1222" column="23" selection-start-line="1222" selection-start-column="23" selection-end-line="1222" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenterDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/JList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="768" column="16" selection-start-line="768" selection-start-column="16" selection-end-line="768" selection-end-column="16" />
+          <folding>
+            <element signature="e#26499#26500#0" expanded="true" />
+            <element signature="e#26534#26535#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/java/awt/BorderLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1803">
+          <caret line="434" column="16" selection-start-line="434" selection-start-column="16" selection-end-line="434" selection-end-column="16" />
+          <folding>
+            <element signature="e#11133#11134#0" expanded="true" />
+            <element signature="e#11159#11160#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1195,58 +1046,54 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/FlowLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6971">
-          <caret line="202" column="17" lean-forward="true" selection-start-line="202" selection-start-column="17" selection-end-line="202" selection-end-column="17" />
-          <folding>
-            <element signature="e#5315#5316#0" expanded="true" />
-            <element signature="e#5349#5350#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/Utilites.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="-1275">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Program.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Inst/Java/src.zip!/javax/swing/JFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="696" column="16" selection-start-line="696" selection-start-column="16" selection-end-line="696" selection-end-column="16" />
           <folding>
-            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#24496#24497#0" expanded="true" />
+            <element signature="e#24553#24554#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/fingerprints/FingerprintImage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="100">
+          <caret line="72" column="54" lean-forward="true" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
           <folding>
-            <element signature="e#2674#2675#0" expanded="true" />
-            <element signature="e#2706#2707#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/melesar/gui/FingerprintsForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        <state relative-caret-position="476">
+          <caret line="61" column="32" lean-forward="true" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+            <marker date="1534536176670" expanded="true" signature="1337:1730" ph="..." />
           </folding>
         </state>
       </provider>
