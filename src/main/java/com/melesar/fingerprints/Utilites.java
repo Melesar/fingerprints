@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Utilites
@@ -47,19 +48,6 @@ public class Utilites
         }
 
         return res;
-    }
-
-    public static BufferedImage loadResourceImage(String name) throws IOException
-    {
-        InputStream in = Utilites.class.getClassLoader().getResourceAsStream(name);
-        BufferedReader bf = new BufferedReader(new InputStreamReader(in));
-        String resource;
-
-        while ((resource = bf.readLine()) != null) {
-            System.out.println(resource);
-        }
-
-        return null;
     }
 
     private static final double brightnessMultiplier = (double) 1 / 3 / 255;

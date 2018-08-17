@@ -54,8 +54,6 @@ public class FingerprintImage
         return isMatch(otherFeatures);
     }
 
-
-
     public FeatureList getFeatures()
     {
         return new FeatureList(featuresLookup.getFeatures());
@@ -87,6 +85,11 @@ public class FingerprintImage
         }
 
         ImageIO.write(directionsMap, "bmp", new File("directions.bmp"));
+    }
+
+    public BufferedImage getImageData()
+    {
+        return imageData;
     }
 
     public void drawTraceLines(String fileName)
