@@ -4,6 +4,8 @@ import com.melesar.fingerprints.FingerprintImage;
 import com.melesar.fingerprints.Utilites;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +16,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class FingerprintsForm extends JFrame implements MouseListener, ActionListener
+public class FingerprintsForm extends JFrame implements ActionListener, ListSelectionListener
 {
     private JPanel holder;
     private JLabel mainImage;
@@ -67,7 +69,6 @@ public class FingerprintsForm extends JFrame implements MouseListener, ActionLis
                 URL url = Utilites.class.getResource(String.format("images/%s", resource));
                 FingerprintImage fingerprintImage = FingerprintImage.create(new File(url.toURI()));
                 FingerprintPresenter presenter = new FingerprintPresenter(fingerprintImage);
-                presenter.setClickListener(this);
 
                 fingerprintList.addElement(presenter);
                 fingerprintModels.add(fingerprintImage);
@@ -83,6 +84,8 @@ public class FingerprintsForm extends JFrame implements MouseListener, ActionLis
         jList.setFixedCellHeight(300);
         jList.setFixedCellWidth(300);
         jList.setCellRenderer(new FingerprintPresenterDrawer());
+        jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jList.addListSelectionListener(this);
 
         scroll = new JScrollPane(jList);
         holder.add(scroll, BorderLayout.WEST);
@@ -122,40 +125,14 @@ public class FingerprintsForm extends JFrame implements MouseListener, ActionLis
     }
 
     @Override
-    public void mouseClicked(MouseEvent e)
-    {
-        FingerprintPresenter presenter = (FingerprintPresenter) e.getSource();
-        int index = fingerprintList.indexOf(presenter);
-        selectModel(index);
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e)
     {
         compareFingerprints();
     }
 
     @Override
-    public void mousePressed(MouseEvent e)
+    public void valueChanged(ListSelectionEvent e)
     {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e)
-    {
-
+        selectModel(e.getFirstIndex());
     }
 }

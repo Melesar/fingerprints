@@ -34,12 +34,6 @@ public class FingerprintPresenter
         return content;
     }
 
-    public void setClickListener(MouseListener listener)
-    {
-        content.addMouseListener(listener);
-        mainImage.addMouseListener(listener);
-    }
-
     public FingerprintPresenter(FingerprintImage model)
     {
         this.icon = new ImageIcon(model.getImageData());
