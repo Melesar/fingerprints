@@ -98,13 +98,29 @@ public class FingerprintsForm extends JFrame implements ActionListener, ListSele
         mainImage.setSize(250, 300);
         content.add(mainImage);
 
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setBackground(BACKGROUND_COLOR);
+        content.add(buttonsPanel, BorderLayout.SOUTH);
 
         JButton cmpButton = new JButton("Compare");
         cmpButton.setSize(100, 70);
         cmpButton.setBackground(BACKGROUND_COLOR);
         cmpButton.setForeground(new Color(200, 200, 200));
         cmpButton.addActionListener(this);
-        content.add(cmpButton, BorderLayout.SOUTH);
+        buttonsPanel.add(cmpButton);
+
+        JButton soundButton = new JButton("Sound");
+        soundButton.setSize(100, 70);
+        soundButton.setBackground(BACKGROUND_COLOR);
+        soundButton.setForeground(new Color(200, 200, 200));
+        soundButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                SoundForm.showForm();
+            }
+        });
+        buttonsPanel.add(soundButton);
     }
 
     private void compareFingerprints()

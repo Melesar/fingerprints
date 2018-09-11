@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.melesar.gui.SoundForm">
+  <grid id="27dc6" binding="content" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="18091" binding="buttons" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="6f916" class="javax.swing.JButton" binding="btnRecord">
+            <constraints/>
+            <properties>
+              <text value="Record voice"/>
+            </properties>
+          </component>
+          <component id="d3030" class="javax.swing.JButton" binding="btnValidate">
+            <constraints/>
+            <properties>
+              <text value="Validate voice"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="50be7" class="javax.swing.JLabel" binding="text">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
