@@ -7,7 +7,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="18091" binding="buttons" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+      <grid id="18091" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="North"/>
         <properties/>
         <border type="none"/>
@@ -30,7 +30,7 @@
         <constraints border-constraint="Center"/>
         <properties>
           <horizontalAlignment value="0"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
     </children>
